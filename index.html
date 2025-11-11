@@ -527,6 +527,18 @@ All content and assets are ready for immediate sharing.
     });
   </script>
 
+<!-- Modal markup for project details -->
+<div id="modalOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-label="Project Details">
+  <div class="bg-white rounded-lg max-w-lg w-full p-6 shadow-lg relative focus:outline-none">
+    <button id="closeModal"
+      class="absolute top-3 right-3 text-gray-400 hover:text-primary text-3xl font-bold focus:outline-none focus:ring-2 focus:ring-primary"
+      aria-label="Close Project Details Modal">&times;</button>
+    <div id="modalContent">
+      <!-- Dynamic project details will be injected here -->
+    </div>
+  </div>
+</div>
+
 <!--
 ==================================================
 Testing Checklist
