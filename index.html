@@ -567,6 +567,12 @@ All content and assets are ready for immediate sharing.
       }
     }
   });
+
+  // Always start at top on page load (no scroll offset)
+  window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+  });
+
 </script>
 
 <!--
