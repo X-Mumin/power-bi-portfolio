@@ -68,6 +68,12 @@ All content and assets are ready for immediate sharing.
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+
+    /* Remove focus outline for mouse click, keep for keyboard */
+    a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+      outline: none;
+      box-shadow: none;
+    }
   </style>
 </head>
 <body class="bg-neutralBg text-neutralText font-sans min-h-screen antialiased scroll-smooth">
@@ -75,7 +81,7 @@ All content and assets are ready for immediate sharing.
   <header aria-label="Main Navigation" class="fixed z-20 w-full bg-card border-b border-neutralBg shadow-sm">
     <nav class="mx-auto max-w-6xl flex items-center justify-between px-4 py-3 lg:px-8">
       <a href="#home" class="text-xl font-heading font-bold text-primary">Mu'min Ahmad</a>
-      <button id="navToggle" aria-label="Toggle navigation" class="hamburger lg:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" tabindex="0">
+      <button id="navToggle" aria-label="Toggle navigation" class="hamburger lg:hidden p-2 rounded focus:outline-none" tabindex="0">
         <span class="block w-6 h-1 mb-1 bg-primary"></span>
         <span class="block w-6 h-1 mb-1 bg-primary"></span>
         <span class="block w-6 h-1 bg-primary"></span>
@@ -417,15 +423,32 @@ All content and assets are ready for immediate sharing.
     // Active link highlight
     const links = document.querySelectorAll('#navMenu a');
     const sections = Array.from(links).map(link => document.querySelector(link.getAttribute('href')));
+
     function highlightNav() {
       const scrollPos = window.scrollY + 110;
+      let activeIdx = -1;
       sections.forEach((section, idx) => {
-        if(section && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-          links.forEach(l => l.classList.remove('border-b-2', 'border-primary', 'text-primary', 'font-bold'));
-          links[idx].classList.add('border-b-2', 'border-primary', 'text-primary', 'font-bold');
+        if (
+          section &&
+          scrollPos >= section.offsetTop &&
+          scrollPos < section.offsetTop + section.offsetHeight
+        ) {
+          activeIdx = idx;
+        }
+      });
+      // If at the bottom of the page, select last section
+      if (activeIdx === -1 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+        activeIdx = sections.length - 1;
+      }
+      links.forEach((l, idx) => {
+        l.classList.remove('border-b-2', 'border-primary', 'text-primary', 'font-bold');
+        if (idx === activeIdx) {
+          l.classList.add('border-b-2', 'border-primary', 'text-primary', 'font-bold');
         }
       });
     }
+
+    
     window.addEventListener('scroll', highlightNav);
 
     // Contact form validation
