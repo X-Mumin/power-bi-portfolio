@@ -96,46 +96,49 @@ All content and assets are ready for immediate sharing.
 <body class="bg-neutralBg dark:bg-darkBg text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth">
   <!-- Sticky Navigation -->
   <header aria-label="Main Navigation" class="fixed z-20 w-full bg-card dark:bg-darkBg border-b border-neutralBg shadow-sm">
-    <nav class="w-full flex items-center justify-between px-4 py-3 lg:px-8">     
-      <!-- Left: Branding -->
-      <div class="flex items-center gap-4">
-        <a href="#home" class="text-xl font-heading font-bold text-primary">Mu'min Ahmad</a>
-        <a href="#contact"
-          class="ml-2 px-3 py-1 rounded-full bg-accent text-card text-xs font-bold shadow hover:bg-primary transition"
-        >Available for Freelance</a>
-      </div>
-      
-      <!-- Center: Navigation links (hide on mobile) -->
-      <ul id="navMenu"
-        class="hidden lg:flex gap-8 font-semibold flex-row lg:w-auto transition-all ease-in duration-300"
-      >
-        <li><a href="#home" class="py-2 px-4 hover:text-accent" aria-current="page">Home</a></li>
-        <li><a href="#about" class="py-2 px-4 hover:text-accent">About</a></li>
-        <li><a href="#projects" class="py-2 px-4 hover:text-accent">Projects</a></li>
-        <li><a href="#skills" class="py-2 px-4 hover:text-accent">Skills</a></li>
-        <li><a href="#experience" class="py-2 px-4 hover:text-accent">Experience</a></li>
-        <li><a href="#contact" class="py-2 px-4 hover:text-accent">Contact</a></li>
-      </ul>
-      
-      <!-- Right: Menu Toggle (mobile only) + Dark Mode Button -->
-      <div class="flex items-center gap-3">
-        <button id="navToggle"
-          aria-label="Toggle navigation"
-          class="hamburger lg:hidden p-2 rounded focus:outline-none"
-          tabindex="0"
+  <header aria-label="Main Navigation" class="fixed z-20 w-full bg-card dark:bg-darkBg border-b border-neutralBg shadow-sm">
+    <div class="max-w-6xl mx-auto w-full px-4 lg:px-8">
+      <nav class="w-full flex items-center justify-between py-3">
+        <!-- Left: Branding -->
+        <div class="flex items-center gap-4">
+          <a href="#home" class="text-xl font-heading font-bold text-primary">Mu'min Ahmad</a>
+          <a href="#contact"
+            class="ml-2 px-3 py-1 rounded-full bg-accent text-card text-xs font-bold shadow hover:bg-primary transition"
+          >Available for Freelance</a>
+        </div>
+  
+        <!-- Center: Navigation links (hide on mobile) -->
+        <ul id="navMenu"
+          class="hidden lg:flex gap-8 font-semibold flex-row transition-all ease-in duration-300"
         >
-          <span class="block w-6 h-1 mb-1 bg-primary"></span>
-          <span class="block w-6 h-1 mb-1 bg-primary"></span>
-          <span class="block w-6 h-1 bg-primary"></span>
-        </button>
-        <button id="darkToggle"
-          aria-label="Toggle dark mode"
-          class="ml-1 px-2 py-1 rounded bg-neutralBg text-primary border border-neutralText hover:bg-darkBg hover:text-accent transition"
-        >
-          <i data-lucide="moon" class="lucide w-5 h-5"></i>
-        </button>
-      </div>
-    </nav>
+          <li><a href="#home" class="py-2 px-4 hover:text-accent" aria-current="page">Home</a></li>
+          <li><a href="#about" class="py-2 px-4 hover:text-accent">About</a></li>
+          <li><a href="#projects" class="py-2 px-4 hover:text-accent">Projects</a></li>
+          <li><a href="#skills" class="py-2 px-4 hover:text-accent">Skills</a></li>
+          <li><a href="#experience" class="py-2 px-4 hover:text-accent">Experience</a></li>
+          <li><a href="#contact" class="py-2 px-4 hover:text-accent">Contact</a></li>
+        </ul>
+  
+        <!-- Right: Actions -->
+        <div class="flex items-center gap-3">
+          <button id="navToggle"
+            aria-label="Toggle navigation"
+            class="hamburger lg:hidden p-2 rounded focus:outline-none"
+            tabindex="0"
+          >
+            <span class="block w-6 h-1 mb-1 bg-primary"></span>
+            <span class="block w-6 h-1 mb-1 bg-primary"></span>
+            <span class="block w-6 h-1 bg-primary"></span>
+          </button>
+          <button id="darkToggle"
+            aria-label="Toggle dark mode"
+            class="ml-1 px-2 py-1 rounded bg-neutralBg text-primary border border-neutralText hover:bg-darkBg hover:text-accent transition"
+          >
+            <i data-lucide="moon" class="lucide w-5 h-5"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- Main Content Container -->
