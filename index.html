@@ -657,12 +657,12 @@ All content and assets are ready for immediate sharing.
       : '<i data-lucide="moon" class="lucide w-5 h-5"></i>';
     lucide.createIcons();
   }
+  // Toggle `dark` on <html>
   darkBtn.onclick = function() {
-    document.body.classList.toggle('dark');
-    setDarkIcon(document.body.classList.contains('dark'));
+    document.documentElement.classList.toggle('dark');
+    setDarkIcon(document.documentElement.classList.contains('dark'));
   };
-  setDarkIcon(document.body.classList.contains('dark'));
-
+  setDarkIcon(document.documentElement.classList.contains('dark'));
 </script>
 
 <!--
