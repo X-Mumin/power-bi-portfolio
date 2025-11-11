@@ -552,16 +552,6 @@ All content and assets are ready for immediate sharing.
   const modalContent = document.getElementById('modalContent');
   const closeModal = document.getElementById('closeModal');
 
-  // Attach modal logic to each [View Details] button in the Projects section
-  document.querySelectorAll('#projects [aria-label="View Details"]').forEach((btn, idx) => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      modalContent.innerHTML = projectDetails[idx];
-      modalOverlay.classList.remove('hidden');
-      closeModal.focus();
-    });
-  });
-
   // Modal close functions
   closeModal.onclick = () => modalOverlay.classList.add('hidden');
   modalOverlay.onclick = (e) => {
