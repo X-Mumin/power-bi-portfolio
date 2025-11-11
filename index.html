@@ -460,6 +460,23 @@ All content and assets are ready for immediate sharing.
   <!-- Script: Lucide Icon Rendering + Hamburger Navigation + Smooth Scroll + Fade-in Animation + Active Link Highlight + Form Validation -->
   <script>
     lucide.createIcons();
+
+    // Dark Mode
+    const darkBtn = document.getElementById('darkToggle');
+    function setDarkIcon(isDark) {
+      darkBtn.innerHTML = isDark
+        ? '<i data-lucide="sun" class="lucide w-5 h-5"></i>'
+        : '<i data-lucide="moon" class="lucide w-5 h-5"></i>';
+      lucide.createIcons();
+    }
+    // Toggle `dark` on <html>
+    darkBtn.onclick = function() {
+      document.documentElement.classList.toggle('dark');
+      setDarkIcon(document.documentElement.classList.contains('dark'));
+    };
+    setDarkIcon(document.documentElement.classList.contains('dark'));
+
+    
     // Hamburger menu
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
@@ -649,20 +666,6 @@ All content and assets are ready for immediate sharing.
   window.addEventListener('load', function() {
     window.scrollTo(0, 0);
   });
-
-  const darkBtn = document.getElementById('darkToggle');
-  function setDarkIcon(isDark) {
-    darkBtn.innerHTML = isDark
-      ? '<i data-lucide="sun" class="lucide w-5 h-5"></i>'
-      : '<i data-lucide="moon" class="lucide w-5 h-5"></i>';
-    lucide.createIcons();
-  }
-  // Toggle `dark` on <html>
-  darkBtn.onclick = function() {
-    document.documentElement.classList.toggle('dark');
-    setDarkIcon(document.documentElement.classList.contains('dark'));
-  };
-  setDarkIcon(document.documentElement.classList.contains('dark'));
 </script>
 
 <!--
