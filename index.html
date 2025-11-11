@@ -428,20 +428,25 @@ All content and assets are ready for immediate sharing.
     
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -40% 0px', // triggers a bit earlier for UX
-      threshold: 0.1 // section is considered visible if 10% is in viewport
+      rootMargin: '0px 0px -40% 0px',
+      threshold: 0.1
     };
+    
+    let activeSectionId = sectionIds[0]; // Default to 'home'
+    
+    function setActiveNav(id) {
+      navLinks.forEach(link => link.classList.remove('border-b-2','border-primary','text-primary','font-bold'));
+      const activeLink = navLinks.find(link => link.getAttribute('href').replace('#','') === id);
+      if (activeLink) {
+        activeLink.classList.add('border-b-2','border-primary','text-primary','font-bold');
+      }
+    }
     
     function onSectionIntersect(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navLinks.forEach(link => link.classList.remove('border-b-2','border-primary','text-primary','font-bold'));
-          const activeLink = navLinks.find(link =>
-            link.getAttribute('href').replace('#','') === entry.target.id
-          );
-          if (activeLink) {
-            activeLink.classList.add('border-b-2','border-primary','text-primary','font-bold');
-          }
+          activeSectionId = entry.target.id;
+          setActiveNav(activeSectionId);
         }
       });
     }
@@ -451,6 +456,14 @@ All content and assets are ready for immediate sharing.
     sectionIds.forEach(id => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
+    });
+    
+    // Always highlight 'Home' when near top
+    window.addEventListener('scroll', function() {
+      if (window.scrollY < 80) {
+        activeSectionId = 'home';
+        setActiveNav('home');
+      }
     });
 
     // Contact form validation
