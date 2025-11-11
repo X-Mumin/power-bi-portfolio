@@ -465,34 +465,6 @@ All content and assets are ready for immediate sharing.
         }
       });
     });
-
-    // Chart.js demo for data storytelling (on first project, optional mini-bar chart for KPIs)
-    window.addEventListener('DOMContentLoaded', () => {
-      if(window.Chart) {
-        const chartDiv = document.createElement('div');
-        chartDiv.className = 'mt-3 mb-1 w-full flex justify-center';
-        chartDiv.innerHTML = '<canvas id="projectKPI" width="260" height="100" aria-label="Demo Chart for KPIs"></canvas>';
-        document.querySelectorAll('.grid > div')[0].appendChild(chartDiv);
-        const ctx = document.getElementById('projectKPI').getContext('2d');
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['YoY Growth','Market Share','Revenue','Satisfaction'],
-            datasets: [{
-              label: 'KPI',
-              data: [16, 22, 34, 80],
-              backgroundColor: ['#2563EB','#14B8A6','#2563EB','#14B8A6'],
-            }]
-          },
-          options: {
-            plugins: { legend: { display: false } },
-            scales: { y: { beginAtZero: true, ticks:{color:'#1F2937'} }, x:{ticks:{color:'#1F2937'}} },
-            responsive:true,
-            animation: { duration: 800 }
-          }
-        });
-      }
-    });
     
 <!-- 2. Add this full JavaScript block at the END of your scripts (after Lucide, etc.) -->
   // ==== Project detail content as HTML strings ====
