@@ -400,6 +400,7 @@ All content and assets are ready for immediate sharing.
           document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
           navMenu.classList.add('hidden');
           navToggle.classList.remove('open');
+          setTimeout(highlightNav, 300); // <-- Force highlight to update after scroll
         }
       });
     });
@@ -428,20 +429,15 @@ All content and assets are ready for immediate sharing.
       const scrollPos = window.scrollY + 110;
       let activeIdx = -1;
       sections.forEach((section, idx) => {
-        if (
-          section &&
-          scrollPos >= section.offsetTop &&
-          scrollPos < section.offsetTop + section.offsetHeight
-        ) {
+        if (section && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
           activeIdx = idx;
         }
       });
-      // If at the bottom of the page (for small/short last section), highlight the last nav link
-      if (
-        activeIdx === -1 &&
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
-      ) {
-        activeIdx = sections.length - 1;
+      // Always highlight last section if at bottom OR no active section
+      if (activeIdx === -1) {
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+          activeIdx = sections.length - 1;
+        }
       }
       links.forEach((l, idx) => {
         l.classList.remove('border-b-2', 'border-primary', 'text-primary', 'font-bold');
