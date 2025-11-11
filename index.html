@@ -96,7 +96,7 @@ All content and assets are ready for immediate sharing.
 <body class="bg-neutralBg dark:bg-darkBg text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth">
   <!-- Sticky Navigation -->
   <header aria-label="Main Navigation" class="fixed z-20 w-full bg-card dark:bg-darkBg border-b border-neutralBg shadow-sm">
-    <nav class="mx-auto max-w-6xl flex items-center justify-between px-4 py-3 lg:px-8">     
+    <nav class="w-full flex items-center justify-between px-4 py-3 lg:px-8">     
       <!-- Left: Branding -->
       <div class="flex items-center gap-4">
         <a href="#home" class="text-xl font-heading font-bold text-primary">Mu'min Ahmad</a>
@@ -658,6 +658,7 @@ All content and assets are ready for immediate sharing.
     document.body.classList.toggle('dark');
     setDarkIcon(document.body.classList.contains('dark'));
   };
+  setDarkIcon(document.body.classList.contains('dark'));
 
 </script>
 
