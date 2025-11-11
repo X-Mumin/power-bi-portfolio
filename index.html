@@ -422,31 +422,36 @@ All content and assets are ready for immediate sharing.
     window.addEventListener('DOMContentLoaded', fadeInSections);
 
     // Active link highlight
-    const links = document.querySelectorAll('#navMenu a');
-    const sections = Array.from(links).map(link => document.querySelector(link.getAttribute('href')));
-
-    function highlightNav() {
-      const scrollPos = window.scrollY + 110;
-      let activeIdx = -1;
-      sections.forEach((section, idx) => {
-        if (section && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-          activeIdx = idx;
-        }
-      });
-      // Always highlight last section if at bottom OR no active section
-      if (activeIdx === -1) {
-        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
-          activeIdx = sections.length - 1;
-        }
-      }
-      links.forEach((l, idx) => {
-        l.classList.remove('border-b-2', 'border-primary', 'text-primary', 'font-bold');
-        if (idx === activeIdx) {
-          l.classList.add('border-b-2', 'border-primary', 'text-primary', 'font-bold');
+    // Section highlighting using Intersection Observer
+    const sectionIds = ['home','about','projects','skills','experience','contact'];
+    const navLinks = Array.from(document.querySelectorAll('#navMenu a'));
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -40% 0px', // triggers a bit earlier for UX
+      threshold: 0.1 // section is considered visible if 10% is in viewport
+    };
+    
+    function onSectionIntersect(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('border-b-2','border-primary','text-primary','font-bold'));
+          const activeLink = navLinks.find(link =>
+            link.getAttribute('href').replace('#','') === entry.target.id
+          );
+          if (activeLink) {
+            activeLink.classList.add('border-b-2','border-primary','text-primary','font-bold');
+          }
         }
       });
     }
-    window.addEventListener('scroll', highlightNav);
+    
+    // Set up observer
+    const observer = new IntersectionObserver(onSectionIntersect, observerOptions);
+    sectionIds.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
 
     // Contact form validation
     const contactForm = document.getElementById('contactForm');
