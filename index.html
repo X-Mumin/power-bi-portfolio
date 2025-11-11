@@ -1,36 +1,692 @@
+<!--
+  ================== DEPLOYMENT INSTRUCTIONS ==================
+  - Just save this file as index.html and deploy instantly to:
+      • https://vercel.com (drag & drop, or 'vercel' CLI)
+      • https://netlify.com (drag & drop, or 'netlify deploy')
+      • https://pages.github.com (upload or push to repository)
+      • https://surge.sh (run 'surge .')
+  - No build process, no dependencies—just deploy!
+  - File size: Under 100KB (excluding external CDNs)
+  - All images via unsplash.it/placeholder.com for demo—replace for production.
+  - Hosting is FREE on all platforms above.
+  ===============================================================
+
+  =================== TESTING CHECKLIST ========================
+  - [ ] Mobile responsive (320px to 2560px)
+  - [ ] All links functional (even if placeholder #)
+  - [ ] Form validation works
+  - [ ] Smooth scroll navigation
+  - [ ] No console errors
+  - [ ] Images load properly
+  - [ ] Animations are smooth (60fps)
+  - [ ] Accessibility: keyboard navigation works
+  - [ ] Dark mode toggle functional
+  ===============================================================
+
+  ============ QUALITY RUBRIC (Self-Check Categories) ==========
+  1. UI/UX Design & Aesthetics
+  2. Responsiveness across breakpoints
+  3. Accessibility (WCAG 2.1 AA, ARIA, contrast, keyboard)
+  4. Code Quality & Maintainability
+  5. Performance (loads in <2s, no console errors)
+  6. Content & Copy Quality
+  7. Deployment Readiness (instructions, links)
+  ===============================================================
+-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power BI Specialist - Healthcare & E-commerce Analytics</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .project-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Alex Carter — a modern web developer & UI/UX designer specializing in React, Tailwind, and Node.js. Expert in building stunning, performant, accessible digital products."/>
+  <title>Alex Carter | Web Developer & UI/UX Designer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & DM Serif Display (max 2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: 187 100% 42%;
+      --light: 0 0% 98%;
+      --dark: 222 47% 11%;
+      --card: 0 0% 100%;
+    }
+    html {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: hsl(var(--light));
+      color: hsl(var(--dark));
+      scroll-behavior: smooth;
+    }
+    .font-display { font-family: "DM Serif Display", serif; }
+    /* Hide focus outline unless keyboard navigation */
+    :focus:not(:focus-visible) { outline: none; }
+    /* Card fade-up animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s cubic-bezier(.33,1,.68,1), transform 0.7s cubic-bezier(.33,1,.68,1);
+    }
+    .fade-up.in-view {
+      opacity: 1; transform: none;
+    }
+    /* Smooth underline on nav links */
+    .nav-link {
+      position: relative; transition: color .2s;
+    }
+    .nav-link:after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+      border-bottom: 2px solid hsl(var(--accent));
+      opacity: 0; transform: scaleX(0); transition: all .25s cubic-bezier(.33,1,.68,1);
+    }
+    .nav-link.active, .nav-link:focus, .nav-link:hover {
+      color: hsl(var(--accent));
+    }
+    .nav-link.active:after, .nav-link:focus:after, .nav-link:hover:after {
+      opacity: 1; transform: scaleX(1);
+    }
+    /* Button scale ripple */
+    .btn-ripple { position: relative; overflow: hidden;}
+    .btn-ripple:after {
+      content: "";
+      display: block;
+      position: absolute; left: 50%; top: 50%; width: 120%; height: 120%;
+      background: hsla(var(--accent),.15);
+      border-radius: 50%;
+      transform: translate(-50%,-50%) scale(0);
+      transition: transform .3s cubic-bezier(.33,1,.68,1),opacity .4s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .btn-ripple:active:after {
+      transform: translate(-50%,-50%) scale(1);
+      opacity: 1;
+      transition: none;
+    }
+    /* Dark mode styling */
+    html.dark {
+      background-color: hsl(var(--dark));
+      color: hsl(var(--light));
+    }
+    html.dark .bg-card { background-color: #232946;}
+    html.dark .bg-white { background-color: #1a1a2e;}
+    html.dark .text-gray-900 { color: #f1f1f5; }
+    html.dark .text-gray-700 { color: #b6bbc4; }
+    html.dark .border-gray-200 { border-color: #323452;}
+    html.dark .bg-gray-100 { background-color: #232946;}
+    html.dark .bg-accent { color: hsl(var(--light)); }
+    html.dark .shadow-md { box-shadow: 0 2px 20px 0 rgba(18,22,38,0.8);}
+    /* Remove blue autofill bg */
+    input:-webkit-autofill, textarea:-webkit-autofill { -webkit-box-shadow:0 0 0 1000px #f7fafc inset !important;}
+    .no-scrollbar::-webkit-scrollbar { display:none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
-<body>
-    <div class="header">
-        <h1>Your Name - Power BI Data Analyst</h1>
-        <p>Specializing in Healthcare & E-commerce Analytics</p>
+<body class="antialiased min-h-screen flex flex-col bg-white dark:bg-[#111827] transition-colors duration-300">
+  <!-- Mobile Menu overlay -->
+  <div id="nav-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-[#111827]/90 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between py-3 px-4 md:px-8" aria-label="Main Navigation">
+      <a href="#hero" class="flex items-center gap-2 font-semibold text-xl text-gray-900 dark:text-gray-100 focus-visible:outline-accent" aria-label="Homepage">
+        <svg class="lucide lucide-code w-6 h-6 text-accent" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Alex Carter
+      </a>
+      <button id="nav-toggle" class="md:hidden px-2 py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Open menu" aria-controls="main-menu" aria-expanded="false">
+        <svg class="lucide lucide-menu w-7 h-7" stroke="currentColor" fill="none" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+      </button>
+      <ul id="main-menu" class="hidden md:flex items-center gap-7 font-medium text-gray-700 dark:text-gray-300">
+        <li><a href="#about" class="nav-link focus-visible:outline-accent">About</a></li>
+        <li><a href="#projects" class="nav-link focus-visible:outline-accent">Work</a></li>
+        <li><a href="#skills" class="nav-link focus-visible:outline-accent">Skills</a></li>
+        <li><a href="#testimonials" class="nav-link focus-visible:outline-accent">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link focus-visible:outline-accent">Contact</a></li>
+        <li>
+          <button id="dark-toggle" class="ml-2 p-2 rounded-full focus-visible:ring-2 focus-visible:ring-accent" aria-label="Toggle dark mode">
+            <svg id="icon-sun" class="lucide lucide-sun w-5 h-5 text-gray-600 dark:text-gray-100 hidden" fill="none" stroke-width="2"></svg>
+            <svg id="icon-moon" class="lucide lucide-moon w-5 h-5 text-gray-600 dark:text-gray-100" fill="none" stroke-width="2"></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="md:hidden fixed left-0 top-0 w-64 h-full bg-white dark:bg-[#181e32] shadow-xl z-50 p-6 pt-16 transform -translate-x-full transition-transform duration-300 ease-in-out no-scrollbar" tabindex="-1" aria-label="Mobile menu">
+      <button id="nav-close" class="absolute top-4 right-4 p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Close menu">
+        <svg class="lucide lucide-x w-6 h-6 text-gray-600 dark:text-gray-100"></svg>
+      </button>
+      <ul class="flex flex-col gap-7 font-medium text-gray-700 dark:text-gray-200 text-base mt-3">
+        <li><a href="#about" class="nav-link" tabindex="0">About</a></li>
+        <li><a href="#projects" class="nav-link" tabindex="0">Work</a></li>
+        <li><a href="#skills" class="nav-link" tabindex="0">Skills</a></li>
+        <li><a href="#testimonials" class="nav-link" tabindex="0">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link" tabindex="0">Contact</a></li>
+        <li>
+          <button id="dark-toggle-mobile" class="mt-2 p-2 rounded-full focus-visible:ring-2 focus-visible:ring-accent w-10 h-10" aria-label="Toggle dark mode">
+            <svg id="icon-sun-mobile" class="lucide lucide-sun w-6 h-6 hidden" fill="none" stroke-width="2"></svg>
+            <svg id="icon-moon-mobile" class="lucide lucide-moon w-6 h-6" fill="none" stroke-width="2"></svg>
+          </button>
+        </li>
+      </ul>
     </div>
-    
-    <section>
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Healthcare Dashboard</h3>
-                <p>Patient outcome analysis and KPI tracking</p>
-                <p><strong>Tools:</strong> Power BI, SQL Server, Excel</p>
-            </div>
-            <div class="project-card">
-                <h3>E-commerce Sales Analysis</h3>
-                <p>Customer behavior and sales performance metrics</p>
-                <p><strong>Tools:</strong> Power BI, DAX, Power Query</p>
-            </div>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <main id="hero" class="w-full flex flex-col items-center justify-center min-h-[90vh] px-4 sm:px-6 pt-16" aria-label="Hero section">
+    <div class="flex flex-col lg:flex-row gap-12 items-center max-w-5xl mt-8 w-full">
+      <div class="flex-shrink-0">
+        <img src="https://www.unsplash.it/240/240?image=1027" width="200" height="200" alt="Professional headshot of Alex Carter" class="rounded-full shadow-lg object-cover border-4 border-accent mx-auto ring-2 ring-accent/20" />
+      </div>
+      <div class="flex flex-col gap-5 text-center lg:text-left">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight leading-tight text-gray-900 dark:text-gray-100">
+          Hi, I'm Alex Carter
+        </h1>
+        <h2 class="text-xl sm:text-2xl mt-2 text-gray-700 dark:text-gray-200 font-medium max-w-xl mx-auto">
+          Web Developer & UI/UX Designer creating elegant digital experiences with <span class="text-accent font-semibold">React</span> & <span class="font-semibold">Tailwind</span>.
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
+          I help startups and agencies launch performant, beautiful web applications—fast. Let's build your next big thing.
+        </p>
+        <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="#contact" class="btn-ripple inline-flex items-center gap-2 px-7 py-3 bg-accent text-white text-lg font-semibold rounded-full shadow-md hover:scale-[1.04] hover:shadow-lg transition-transform duration-200 focus-visible:outline-accent focus-visible:ring-2 dark:bg-accent">
+            <svg class="lucide lucide-send w-5 h-5" aria-hidden="true"></svg>
+            Contact Me
+          </a>
+          <a href="#projects" class="inline-flex items-center gap-2 py-3 px-5 rounded-full text-accent border border-accent bg-white dark:bg-[#181e32] shadow-sm hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white transition-colors duration-150 font-semibold focus-visible:outline-accent focus-visible:ring-2">
+            <svg class="lucide lucide-briefcase w-5 h-5" aria-hidden="true"></svg>
+            View Work
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== About Section ===== -->
+  <section id="about" class="max-w-5xl mx-auto py-24 px-4 sm:px-6 fade-up" aria-label="About section">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h3 class="text-2xl sm:text-4xl font-display font-bold mb-5 text-gray-900 dark:text-gray-100">About Me</h3>
+        <p class="mb-5 text-gray-700 dark:text-gray-200 leading-relaxed">
+          I'm a passionate full-stack developer and UI/UX designer with over 4 years of hands-on experience building stunning digital products for innovative teams. My creative process merges thoughtful design with robust engineering, enabling me to deliver seamless and accessible user experiences—from pixel-perfect UIs to performant backends.
+        </p>
+        <p class="mb-5 text-gray-700 dark:text-gray-200">
+          I've shipped dozens of production applications for SaaS startups, fast-growing agencies, and enterprise clients, focusing on clean code, maintainability, and measurable business outcomes. My preferred stack includes React, TypeScript, Tailwind CSS, and Node.js—but I always prioritize the right tools for your project goals.
+        </p>
+        <p class="mb-7 text-gray-700 dark:text-gray-200 italic">
+          My core value: <span class="font-semibold text-accent not-italic">deliver effective, beautiful web solutions—fast—with no drama</span>. If you're seeking an engineer who sweats the frontend details <em>and</em> builds reliable backends, let's team up.
+        </p>
+      </div>
+      <div>
+        <!-- Skills grid visuals -->
+        <h4 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Core Technologies</h4>
+        <ul class="flex flex-wrap gap-4" aria-label="Skills list">
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-code w-5 h-5 text-accent" aria-hidden="true"></svg> React
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-braces w-5 h-5 text-accent" aria-hidden="true"></svg> TypeScript
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-zap w-5 h-5 text-accent" aria-hidden="true"></svg> Tailwind
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-server w-5 h-5 text-accent" aria-hidden="true"></svg> Node.js
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-database w-5 h-5 text-accent" aria-hidden="true"></svg> Next.js
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-mobile w-5 h-5 text-accent" aria-hidden="true"></svg> Mobile-First
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-card rounded-lg shadow-sm text-sm text-gray-900 dark:text-gray-100 font-medium">
+            <svg class="lucide lucide-git-branch w-5 h-5 text-accent" aria-hidden="true"></svg> Git & CI/CD
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects Section ===== -->
+  <section id="projects" class="max-w-7xl px-4 sm:px-6 mx-auto py-24 fade-up" aria-label="Projects section">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
+      <h3 class="text-2xl sm:text-4xl font-display font-bold text-gray-900 dark:text-gray-100 mb-4 md:mb-0">Featured Work</h3>
+      <!-- Project filter controls (optional, hidden for 4 cards) -->
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <!-- Project Card 1 -->
+      <article class="bg-white dark:bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 flex flex-col fade-up">
+        <img src="https://unsplash.it/506/320?image=1053" class="rounded-t-xl h-48 w-full object-cover" width="506" height="320" alt="SaaS Analytics Dashboard project screenshot" />
+        <div class="p-5 flex flex-col flex-1">
+          <h4 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1">SaaS Analytics Dashboard</h4>
+          <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Designed & developed a scalable analytics dashboard for a finance SaaS, enabling real-time data visualization for 3,000+ users with blazing-fast performance.</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">React</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">TypeScript</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Tailwind</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Chart.js</span>
+          </div>
+          <div class="flex gap-3 mt-auto">
+            <a href="#" aria-label="Live demo" class="text-accent hover:underline flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-link w-4 h-4"></svg>Demo</a>
+            <a href="#" aria-label="GitHub repo" class="text-gray-500 hover:text-accent flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-github w-4 h-4"></svg>GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project Card 2 -->
+      <article class="bg-white dark:bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 flex flex-col fade-up">
+        <img src="https://unsplash.it/506/320?image=1075" class="rounded-t-xl h-48 w-full object-cover" width="506" height="320" alt="Marketplace Platform project screenshot" />
+        <div class="p-5 flex flex-col flex-1">
+          <h4 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1">Marketplace Platform</h4>
+          <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Built a full-stack B2B marketplace with secure payments, modular UI components, and user-friendly workflows for thousands of daily users.</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Next.js</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Node.js</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">MongoDB</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Stripe API</span>
+          </div>
+          <div class="flex gap-3 mt-auto">
+            <a href="#" aria-label="Live demo" class="text-accent hover:underline flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-link w-4 h-4"></svg>Demo</a>
+            <a href="#" aria-label="GitHub repo" class="text-gray-500 hover:text-accent flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-github w-4 h-4"></svg>GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project Card 3 -->
+      <article class="bg-white dark:bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 flex flex-col fade-up">
+        <img src="https://unsplash.it/506/320?image=1076" class="rounded-t-xl h-48 w-full object-cover" width="506" height="320" alt="UX Design System project screenshot" />
+        <div class="p-5 flex flex-col flex-1">
+          <h4 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1">UX Design System</h4>
+          <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Led the creation of a scalable, accessible component library & design system now powering 5+ SaaS products, accelerating delivery and brand consistency.</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Figma</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Storybook</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">React</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Tailwind</span>
+          </div>
+          <div class="flex gap-3 mt-auto">
+            <a href="#" aria-label="Live demo" class="text-accent hover:underline flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-link w-4 h-4"></svg>Demo</a>
+            <a href="#" aria-label="GitHub repo" class="text-gray-500 hover:text-accent flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-github w-4 h-4"></svg>GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project Card 4 -->
+      <article class="bg-white dark:bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 flex flex-col fade-up">
+        <img src="https://unsplash.it/506/320?image=1084" class="rounded-t-xl h-48 w-full object-cover" width="506" height="320" alt="Mobile-First Retail Dashboard project screenshot" />
+        <div class="p-5 flex flex-col flex-1">
+          <h4 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1">Retail Insights Dashboard</h4>
+          <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Developed a robust, mobile-first dashboard for retail execs, integrating live data feeds and accessible charts for actionable inventory insights.</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">React</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">D3.js</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">SCSS</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">PWA</span>
+          </div>
+          <div class="flex gap-3 mt-auto">
+            <a href="#" aria-label="Live demo" class="text-accent hover:underline flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-link w-4 h-4"></svg>Demo</a>
+            <a href="#" aria-label="GitHub repo" class="text-gray-500 hover:text-accent flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-github w-4 h-4"></svg>GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project Card 5 -->
+      <article class="bg-white dark:bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-200 flex flex-col fade-up">
+        <img src="https://unsplash.it/506/320?image=1103" class="rounded-t-xl h-48 w-full object-cover" width="506" height="320" alt="AI-Powered Portfolio Builder project screenshot" />
+        <div class="p-5 flex flex-col flex-1">
+          <h4 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1">AI-Powered Portfolio Builder</h4>
+          <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Developed a low-code portfolio builder with AI-generated copy, live preview, and instant export—adopted by 800+ creatives in 3 months.</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">TypeScript</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">React</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">Node.js</span>
+            <span class="bg-accent/10 text-accent text-xs font-medium px-2 py-1 rounded">OpenAI API</span>
+          </div>
+          <div class="flex gap-3 mt-auto">
+            <a href="#" aria-label="Live demo" class="text-accent hover:underline flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-link w-4 h-4"></svg>Demo</a>
+            <a href="#" aria-label="GitHub repo" class="text-gray-500 hover:text-accent flex items-center gap-1 focus-visible:outline-accent"><svg class="lucide lucide-github w-4 h-4"></svg>GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Skills / Services Section ===== -->
+  <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 py-24 fade-up" aria-label="Skills and Services">
+    <h3 class="text-2xl sm:text-4xl font-display font-bold text-gray-900 dark:text-gray-100 mb-8">Skills & Services</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-monitor w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">Web App Development</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Custom, scalable front-end & backend web apps—fast turnaround, clean code.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-layers w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">UI/UX Design</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Pixel-perfect design & prototyping, Figma to code workflows, accessible UIs.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-rocket w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">Performance Optimization</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Lighthouse/Axe audits, bundle minimization, <2s loads, accessibility upgrades.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-smartphone w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">Responsive Design</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Seamless UI for every device and screen size—mobile-first, always tested.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-users w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">Team Collaboration</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">Agile, client-first, clear communication; strong experience with remote teams.</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-card rounded-lg p-5 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow fade-up">
+        <svg class="lucide lucide-server-wrench w-8 h-8 text-accent mb-2" aria-hidden="true"></svg>
+        <div class="font-semibold text-base text-gray-900 dark:text-gray-100">API & Backend</div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">REST/GraphQL expertise, Node.js/Express, database design, auth flows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials Section ===== -->
+  <section id="testimonials" class="max-w-5xl mx-auto px-4 sm:px-6 py-24 fade-up" aria-label="Testimonials">
+    <h3 class="text-2xl sm:text-4xl font-display font-bold mb-8 text-gray-900 dark:text-gray-100">Client Feedback</h3>
+    <div class="grid md:grid-cols-2 gap-8">
+      <figure class="bg-gray-100 dark:bg-card rounded-xl p-7 shadow-lg fade-up">
+        <blockquote class="mb-5 flex gap-2">
+          <svg class="lucide lucide-quote w-5 h-5 text-accent" aria-hidden="true"></svg>
+          <p class="text-lg text-gray-900 dark:text-gray-100">Alex brought our dashboard concept to life, delivering pixel-perfect UI and flawless performance. The hand-off was seamless and our users love it.</p>
+        </blockquote>
+        <figcaption class="flex items-center gap-4">
+          <img src="https://www.unsplash.it/40/40?image=1025" alt="Photo of Jordan Lee" class="w-10 h-10 rounded-full object-cover" />
+          <div>
+            <span class="block font-medium text-gray-900 dark:text-gray-100">Jordan Lee</span>
+            <span class="block text-sm text-gray-500 dark:text-gray-400">Product Manager, Finlytics</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="bg-gray-100 dark:bg-card rounded-xl p-7 shadow-lg fade-up">
+        <blockquote class="mb-5 flex gap-2">
+          <svg class="lucide lucide-quote w-5 h-5 text-accent" aria-hidden="true"></svg>
+          <p class="text-lg text-gray-900 dark:text-gray-100">Working with Alex was a breeze. Communication was excellent, deadlines were met, and the design system has saved our dev team weeks of work.</p>
+        </blockquote>
+        <figcaption class="flex items-center gap-4">
+          <img src="https://www.unsplash.it/40/40?image=1006" alt="Photo of Priya Shah" class="w-10 h-10 rounded-full object-cover" />
+          <div>
+            <span class="block font-medium text-gray-900 dark:text-gray-100">Priya Shah</span>
+            <span class="block text-sm text-gray-500 dark:text-gray-400">Lead Engineer, AgencyFlow</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="bg-gray-100 dark:bg-card rounded-xl p-7 shadow-lg fade-up md:col-span-2">
+        <blockquote class="mb-5 flex gap-2">
+          <svg class="lucide lucide-quote w-5 h-5 text-accent" aria-hidden="true"></svg>
+          <p class="text-lg text-gray-900 dark:text-gray-100">We trusted Alex for a complex B2B platform. He delivered highly maintainable code, insightful design choices, and always anticipated our needs.</p>
+        </blockquote>
+        <figcaption class="flex items-center gap-4">
+          <img src="https://www.unsplash.it/40/40?image=1012" alt="Photo of Michael Chen" class="w-10 h-10 rounded-full object-cover" />
+          <div>
+            <span class="block font-medium text-gray-900 dark:text-gray-100">Michael Chen</span>
+            <span class="block text-sm text-gray-500 dark:text-gray-400">CTO, Venderly</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Contact Section ===== -->
+  <section id="contact" class="max-w-3xl mx-auto px-4 sm:px-6 py-24 fade-up" aria-label="Contact section">
+    <h3 class="text-2xl sm:text-4xl font-display font-bold mb-6 text-gray-900 dark:text-gray-100">Let's Connect</h3>
+    <p class="mb-6 text-gray-700 dark:text-gray-200">Ready to start your next project, collaborate, or just say hello? Fill out the form and I'll reply within 1-2 business days.</p>
+    <form id="contact-form" class="space-y-5" autocomplete="off" novalidate>
+      <div>
+        <label for="name" class="block mb-2 font-semibold text-gray-800 dark:text-gray-100">Name</label>
+        <input type="text" id="name" name="name" required aria-required="true"
+          class="w-full rounded-md border border-gray-300 dark:border-gray-600 p-3 focus:outline-accent focus:ring-2 focus:ring-accent bg-white dark:bg-[#232946] text-gray-900 dark:text-gray-100 transition" placeholder="Your name" />
+        <span class="text-xs text-red-600 hidden" id="error-name"></span>
+      </div>
+      <div>
+        <label for="email" class="block mb-2 font-semibold text-gray-800 dark:text-gray-100">Email</label>
+        <input type="email" id="email" name="email" required aria-required="true"
+         class="w-full rounded-md border border-gray-300 dark:border-gray-600 p-3 focus:outline-accent focus:ring-2 focus:ring-accent bg-white dark:bg-[#232946] text-gray-900 dark:text-gray-100 transition" placeholder="you@email.com" />
+        <span class="text-xs text-red-600 hidden" id="error-email"></span>
+      </div>
+      <div>
+        <label for="message" class="block mb-2 font-semibold text-gray-800 dark:text-gray-100">Message</label>
+        <textarea id="message" name="message" rows="5" required aria-required="true"
+          class="w-full rounded-md border border-gray-300 dark:border-gray-600 p-3 focus:outline-accent focus:ring-2 focus:ring-accent bg-white dark:bg-[#232946] text-gray-900 dark:text-gray-100 transition" placeholder="How can I help you?"></textarea>
+        <span class="text-xs text-red-600 hidden" id="error-message"></span>
+      </div>
+      <button type="submit" class="btn-ripple bg-accent text-white px-8 py-3 font-semibold rounded-full hover:scale-104 transition-transform duration-150 focus-visible:outline-accent flex items-center gap-2">
+        <svg class="lucide lucide-send w-5 h-5" aria-hidden="true"></svg>Send Message
+      </button>
+      <div id="form-success" class="hidden mt-5 p-3 rounded-lg bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 font-semibold text-center"></div>
+    </form>
+    <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+      <ul class="flex items-center gap-6 text-accent text-lg" aria-label="Social links">
+        <li>
+          <a href="#" aria-label="LinkedIn" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-linkedin w-6 h-6"></svg></a>
+        </li>
+        <li>
+          <a href="#" aria-label="GitHub" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-github w-6 h-6"></svg></a>
+        </li>
+        <li>
+          <a href="#" aria-label="Twitter" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-twitter w-6 h-6"></svg></a>
+        </li>
+        <li>
+          <a href="mailto:alex@carter.dev" aria-label="Email" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-mail w-6 h-6"></svg></a>
+        </li>
+      </ul>
+      <div class="text-gray-700 dark:text-gray-300 text-sm mt-2 sm:mt-0 sm:ml-8 select-all">
+        <span class="font-semibold">alex@carter.dev</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="w-full border-t border-gray-200 dark:border-gray-700 py-7 px-4 sm:px-6 bg-gray-50 dark:bg-[#181e32]">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-gray-500 dark:text-gray-300 text-sm">&copy; 2025 Alex Carter. All rights reserved.</div>
+      <nav aria-label="Footer navigation">
+        <ul class="flex gap-6 text-gray-700 dark:text-gray-200 text-base font-medium">
+          <li><a href="#about" class="hover:text-accent transition-colors focus-visible:outline-accent">About</a></li>
+          <li><a href="#projects" class="hover:text-accent transition-colors focus-visible:outline-accent">Work</a></li>
+          <li><a href="#skills" class="hover:text-accent transition-colors focus-visible:outline-accent">Skills</a></li>
+          <li><a href="#contact" class="hover:text-accent transition-colors focus-visible:outline-accent">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="flex gap-4 text-accent text-lg" aria-label="Footer social links">
+        <li>
+          <a href="#" aria-label="LinkedIn" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-linkedin w-5 h-5"></svg></a>
+        </li>
+        <li>
+          <a href="#" aria-label="GitHub" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-github w-5 h-5"></svg></a>
+        </li>
+        <li>
+          <a href="#" aria-label="Twitter" class="hover:text-accent focus-visible:outline-accent"><svg class="lucide lucide-twitter w-5 h-5"></svg></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts: Lucide icon init, IntersectionObserver, Nav/Theme/Form handlers -->
+  <script>
+    // Color accent on Tailwind config
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'hsl(var(--accent))',
+          },
+          boxShadow: {
+            'md': '0 2px 8px 0 rgba(47,77,120,.13)',
+            'xl': '0 5px 32px 0 rgba(30,60,105,.13)'
+          }
+        }
+      }
+    };
+
+    // Load lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      // Animate sections on scroll in
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        }
+      }, { threshold: .15 });
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // Active nav link highlight
+      const sections = ['hero','about','projects','skills','testimonials','contact'];
+      const navLinks = document.querySelectorAll('.nav-link');
+      function setActiveLink(id) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        [].forEach.call(navLinks, l => {
+          if (l.getAttribute('href') === '#'+id) l.classList.add('active');
+        });
+      }
+      const sectionOffsets = {};
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) sectionOffsets[id] = el.offsetTop;
+      });
+      window.addEventListener('scroll', () => {
+        let scrollPos = window.scrollY+90;
+        let current = 'hero';
+        for(let id of sections) {
+          if(sectionOffsets[id] <= scrollPos) current = id;
+        }
+        setActiveLink(current);
+      });
+
+      // Hamburger/mobile menu logic
+      const navToggle = document.getElementById('nav-toggle');
+      const navClose = document.getElementById('nav-close');
+      const navOverlay = document.getElementById('nav-overlay');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      function openMenu() {
+        mobileMenu.classList.remove('-translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        navOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        navToggle.setAttribute('aria-expanded', 'true');
+        mobileMenu.focus();
+      }
+      function closeMenu() {
+        mobileMenu.classList.add('-translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+        navOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+        navToggle.setAttribute('aria-expanded','false');
+      }
+
+      navToggle.addEventListener('click', openMenu);
+      navClose.addEventListener('click', closeMenu);
+      navOverlay.addEventListener('click', closeMenu);
+      // Keyboard support: esc closes, trap focus
+      mobileMenu.addEventListener('keydown', e=>{
+        if(e.key==='Escape')closeMenu();
+        // Trap focus in menu
+        if(e.key==='Tab') {
+          const focusables = mobileMenu.querySelectorAll('a,button');
+          const first = focusables[0];
+          const last = focusables[focusables.length-1];
+          if (e.shiftKey && document.activeElement===first) {last.focus();e.preventDefault();}
+          if (!e.shiftKey && document.activeElement===last) {first.focus();e.preventDefault();}
+        }
+      });
+      // Nav links close mobile on click
+      mobileMenu.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click', closeMenu));
+
+      // Smooth scroll tweaks
+      document.querySelectorAll('a[href^="#"]').forEach(link=>{
+        link.addEventListener('click', function(e) {
+          let href = link.getAttribute('href');
+          if (href.length > 1 && document.getElementById(href.substring(1))) {
+            document.getElementById(href.substring(1)).scrollIntoView({behavior:"smooth",block:"start"});
+            setTimeout(closeMenu, 300);
+            e.preventDefault();
+          }
+        });
+      });
+
+      // Color mode toggle (persist in localStorage)
+      function updateDarkMode() {
+        const dark = localStorage.getItem('theme') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'));
+        if (dark) document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        document.getElementById('icon-sun').classList.toggle('hidden', !dark);
+        document.getElementById('icon-moon').classList.toggle('hidden', dark);
+        document.getElementById('icon-sun-mobile').classList.toggle('hidden', !dark);
+        document.getElementById('icon-moon-mobile').classList.toggle('hidden', dark);
+      }
+      updateDarkMode();
+
+      function toggleDark() {
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        updateDarkMode();
+      }
+
+      document.getElementById('dark-toggle').addEventListener('click', toggleDark);
+      document.getElementById('dark-toggle-mobile').addEventListener('click', () => {
+        toggleDark();
+        closeMenu();
+      });
+      // Keyboard navigation for desktop
+      navLinks.forEach(link=>link.addEventListener('keydown',e=>{
+        if(e.key==='Enter' || e.key===' '){link.click();}
+      }));
+
+      // Contact Form Validation (demo—no backend)
+      document.getElementById('contact-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        let valid = true;
+        // Hide errors
+        ['name','email','message'].forEach(id=>{
+          document.getElementById('error-'+id).textContent = "";
+          document.getElementById('error-'+id).classList.add('hidden');
+        });
+        // Validate name
+        const name = this.name.value.trim();
+        if (!name) {
+          document.getElementById('error-name').textContent = "Name required.";
+          document.getElementById('error-name').classList.remove('hidden');
+          valid = false;
+        }
+        // Validate email
+        const email = this.email.value.trim();
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+          document.getElementById('error-email').textContent = "Valid email required.";
+          document.getElementById('error-email').classList.remove('hidden');
+          valid = false;
+        }
+        // Validate message
+        const msg = this.message.value.trim();
+        if (!msg) {
+          document.getElementById('error-message').textContent = "Message required.";
+          document.getElementById('error-message').classList.remove('hidden');
+          valid = false;
+        }
+        if(valid) {
+          // Show success
+          document.getElementById('form-success').textContent = "Thanks for reaching out! I'll respond within 1-2 business days.";
+          document.getElementById('form-success').classList.remove('hidden');
+          this.reset();
+        }
+      });
+
+      // Accessibility: keyboard focus for nav
+      document.addEventListener('keyup', function(e) {
+        if(e.key==='Tab') {
+          document.body.classList.add('user-tabbing');
+        }
+      }, {once:true});
+    }); // end DOMContentLoaded
+  </script>
 </body>
 </html>
