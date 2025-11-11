@@ -40,6 +40,7 @@ All content and assets are ready for immediate sharing.
   <!-- Tailwind config: Color accents and fonts -->
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -92,7 +93,7 @@ All content and assets are ready for immediate sharing.
     }
   </style>
 </head>
-<body class="bg-neutralBg text-neutralText font-sans min-h-screen antialiased scroll-smooth">
+<body class="bg-neutralBg dark:bg-darkBg text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth">
   <!-- Sticky Navigation -->
   <header aria-label="Main Navigation" class="fixed z-20 w-full bg-card border-b border-neutralBg shadow-sm">
     <nav class="mx-auto max-w-6xl flex items-center justify-between px-4 py-3 lg:px-8">
@@ -112,6 +113,9 @@ All content and assets are ready for immediate sharing.
         <li><a href="#contact" class="py-2 px-4 hover:text-accent">Contact</a></li>
       </ul>
     </nav>
+    <button id="darkToggle" aria-label="Toggle dark mode" class="ml-2 px-2 py-1 rounded bg-neutralBg text-primary border border-neutralText hover:bg-darkBg hover:text-accent transition">
+      <i data-lucide="moon" class="lucide w-5 h-5"></i>
+      </button>
   </header>
 
   <!-- Main Content Container -->
@@ -622,6 +626,11 @@ All content and assets are ready for immediate sharing.
   window.addEventListener('load', function() {
     window.scrollTo(0, 0);
   });
+
+  document.getElementById('darkToggle').onclick = function() {
+    document.documentElement.classList.toggle('dark');
+    lucide.createIcons();
+    };
 
 </script>
 
