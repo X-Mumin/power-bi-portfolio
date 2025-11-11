@@ -525,7 +525,105 @@ All content and assets are ready for immediate sharing.
         });
       }
     });
-  </script>
+    
+<!-- 2. Add this full JavaScript block at the END of your scripts (after Lucide, etc.) -->
+  // ==== Project detail content as HTML strings ====
+  const projectDetails = [
+    // MENA Retail Authority Dashboard (Power BI)
+    `<h3 class="text-xl font-bold text-primary mb-2">MENA Retail Authority Dashboard</h3>
+      <img src="https://via.placeholder.com/600x340.png?text=Power+BI+Dashboard" class="rounded w-full mb-4" alt="MENA Retail Authority Dashboard Screenshot">
+      <p class="text-neutralText mb-3">
+        <b>Overview:</b> Interactive Power BI dashboard analyzing retail performance across MENA markets.
+        Features multi-page drill-through navigation, DAX KPIs (YoY growth, market share, revenue trends), and dynamic slicers for instant stakeholder decision support.
+      </p>
+      <ul class="mb-4 text-sm list-disc pl-5 text-neutralText">
+        <li><b>Business Impact:</b> Delivered actionable performance insights leading to data-driven strategy updates and improved regional focus.</li>
+        <li><b>Technical Stack:</b> Power BI, DAX, Power Query, Data Modeling</li>
+      </ul>
+      <span class="inline-block px-3 py-1 rounded-full bg-accent text-card text-xs font-bold">Performance Insights</span>`,
+
+    // Retail Market Analysis Dashboard (Excel)
+    `<h3 class="text-xl font-bold text-primary mb-2">Retail Market Analysis Dashboard</h3>
+      <img src="https://via.placeholder.com/600x340.png?text=Excel+Dashboard" class="rounded w-full mb-4" alt="Retail Market Analysis Dashboard Screenshot">
+      <p class="text-neutralText mb-3">
+        <b>Overview:</b> Comprehensive Excel dashboard automating retail market metrics. Included pivot tables, dynamic charts, and segmentation features.
+      </p>
+      <ul class="mb-4 text-sm list-disc pl-5 text-neutralText">
+        <li><b>Business Impact:</b> Enabled real-time, data-driven monitoring of sales, inventory, and key trends for rapid business responses.</li>
+        <li><b>Technical Stack:</b> Excel, Power Query, Pivot Tables, Data Visualization</li>
+      </ul>
+      <span class="inline-block px-3 py-1 rounded-full bg-accent text-card text-xs font-bold">Real-Time Monitoring</span>`,
+
+    // Procurement Cost Optimization Analysis (SQL + Python)
+    `<h3 class="text-xl font-bold text-primary mb-2">Procurement Cost Optimization Analysis</h3>
+      <img src="https://via.placeholder.com/600x340.png?text=SQL+Python+Analysis" class="rounded w-full mb-4" alt="Procurement Cost Optimization Dashboard Screenshot">
+      <p class="text-neutralText mb-3">
+        <b>Overview:</b> Vendor evaluation and cost analysis using SQL and Python (Pandas). Research across 10+ suppliers reduced cost by 50% (150K EGP) and shortened lead times by 40%.
+      </p>
+      <ul class="mb-4 text-sm list-disc pl-5 text-neutralText">
+        <li><b>Business Impact:</b> Strategic procurement and negotiation decisions based on clear, data-backed supplier performance scoring.</li>
+        <li><b>Technical Stack:</b> SQL, Python, Pandas, Statistical Analysis</li>
+      </ul>
+      <span class="inline-block px-3 py-1 rounded-full bg-accent text-card text-xs font-bold">Cost Reduction -50%</span>`,
+
+    // Business Performance Insights Dashboard (Power BI)
+    `<h3 class="text-xl font-bold text-primary mb-2">Business Performance Insights Dashboard</h3>
+      <img src="https://via.placeholder.com/600x340.png?text=Power+BI+Dashboard" class="rounded w-full mb-4" alt="Business Performance Insights Dashboard Screenshot">
+      <p class="text-neutralText mb-3">
+        <b>Overview:</b> Interactive Power BI dashboard created for DEPI training. Integrated statistical analysis and impactful insight narratives to support decision-making across core business metrics.
+      </p>
+      <ul class="mb-4 text-sm list-disc pl-5 text-neutralText">
+        <li><b>Business Impact:</b> Empowered managers with clear, actionable performance insights, accelerating data-driven improvements.</li>
+        <li><b>Technical Stack:</b> Power BI, Statistical Analysis, DAX, Data Storytelling</li>
+      </ul>
+      <span class="inline-block px-3 py-1 rounded-full bg-accent text-card text-xs font-bold">Actionable Insights</span>`
+  ];
+
+  // ==== Modal controls ====
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modalContent');
+  const closeModal = document.getElementById('closeModal');
+
+  // Attach modal logic to each [View Details] button in the Projects section
+  document.querySelectorAll('#projects [aria-label="View Details"]').forEach((btn, idx) => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modalContent.innerHTML = projectDetails[idx];
+      modalOverlay.classList.remove('hidden');
+      closeModal.focus();
+    });
+  });
+
+  // Modal close functions
+  closeModal.onclick = () => modalOverlay.classList.add('hidden');
+  modalOverlay.onclick = (e) => {
+    if (e.target === modalOverlay) modalOverlay.classList.add('hidden');
+  };
+  document.addEventListener('keydown', function(e) {
+    if (!modalOverlay.classList.contains('hidden') && (e.key === 'Escape' || e.keyCode === 27)) {
+      modalOverlay.classList.add('hidden');
+    }
+  });
+
+  // Optional: trap focus inside modal when open for accessibility
+  modalOverlay.addEventListener('keydown', function(e) {
+    if (!modalOverlay.classList.contains('hidden')) {
+      const focusable = modalOverlay.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) { // shift-tab
+          if (document.activeElement === first) {
+            e.preventDefault(); last.focus();
+          }
+        } else { // tab
+          if (document.activeElement === last) {
+            e.preventDefault(); first.focus();
+          }
+        }
+      }
+    }
+  });
+</script>
 
 <!-- Modal markup for project details -->
 <div id="modalOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-label="Project Details">
