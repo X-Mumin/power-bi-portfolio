@@ -436,8 +436,11 @@ All content and assets are ready for immediate sharing.
           activeIdx = idx;
         }
       });
-      // If at the bottom of the page, select last section
-      if (activeIdx === -1 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+      // If at the bottom of the page (for small/short last section), highlight the last nav link
+      if (
+        activeIdx === -1 &&
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
+      ) {
         activeIdx = sections.length - 1;
       }
       links.forEach((l, idx) => {
@@ -447,8 +450,6 @@ All content and assets are ready for immediate sharing.
         }
       });
     }
-
-    
     window.addEventListener('scroll', highlightNav);
 
     // Contact form validation
