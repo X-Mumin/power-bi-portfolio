@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" m-0 p-0 overflow-x-hidden>
+<html lang="en" m-0 p-0>
     <head>
         <meta charset="UTF-8">
         <!-- Resource Hints for Performance -->
@@ -185,18 +185,17 @@
             .dark ::-webkit-scrollbar-thumb { background: #283047; }
             ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
             .dark ::-webkit-scrollbar-thumb:hover { background: #374151; }
-            /* Prevent layout shift & horizontal scroll */
             html {
-            overflow-y: scroll; /* Always show vertical scrollbar to prevent shift */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: scroll; /* Forces scrollbar to prevent shift */
+            scroll-behavior: smooth;
             }
             body {
-            overflow-x: hidden;
             width: 100%;
+            /* overflow-x: hidden; REMOVED because it breaks sticky */
             }
         </style>
     </head>
-    <body class="m-0 p-0 overflow-x-hidden bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth duration-200">
+    <body class="m-0 p-0 bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth duration-200">
         <!-- Skip Navigation Link for Accessibility -->
         <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">
         Skip to main content
@@ -563,13 +562,13 @@
                 </div>
                 <!-- RIGHT: Social Icons -->
                 <div class="w-full md:w-auto md:flex-1 flex justify-end gap-2">
-                    <a href="https://www.linkedin.com/in/mumin-ahmad/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="transition text-neutralText dark:text-gray-100 hover:text-primary dark:hover:text-accent"><i data-lucide="linkedin" class="lucide w-6 h-6"></i></a>
+                    <a href="https://www.linkedin.com/in/mumin-ahmad/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="transition text-neutralText dark:text-gray-100 hover:text-primary dark:hover:text-accent"><i data-lucide="linkedin" class="lucide w-6 h-6\"></i></a>
                     <a href="mailto:mumin.ahmad@zohomail.com" aria-label="Email" target="_blank" rel="noopener noreferrer" class="transition text-neutralText dark:text-gray-100 hover:text-primary dark:hover:text-accent"><i data-lucide="mail" class="lucide w-6 h-6"></i></a>
                 </div>
             </div>
             <div class="text-xs mt-3 text-gray-600 dark:text-gray-400 text-center">Transforming Data into Decisions</div>
         </footer>
-        <!-- Script: Lucide Icon Rendering + Hamburger Navigation + Smooth Scroll + Fade-in Animation + Active Link Highlight + Form Validation -->
+        <!-- Script: Lucide Icon Rendering + Hamburger Navigation + Smooth Scroll + Fade-in Animation + Active Link Highlight + Form Validation -->\n    
     </body>
     <script>
         lucide.createIcons();
