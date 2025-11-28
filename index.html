@@ -139,40 +139,33 @@
             white-space: normal;
             }
             /* Enhanced dark mode toggle animation */
-                #darkToggle {
-                  position: relative;
-                  overflow: hidden;
-                }
-
-                #darkToggle::before {
-                  content: '';
-                  position: absolute;
-                  inset: 0;
-                  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-                  transform: translateX(-100%);
-                  transition: transform 0.6s;
-                }
-
-                #darkToggle:hover::before {
-                  transform: translateX(100%);
-                }
-
-                /* Smooth icon transition */
-                #darkToggle i {
-                  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                }
-
-                #darkToggle:hover i {
-                  transform: rotate(15deg) scale(1.1);
-                }
-
-                /* Active state animation */
-                #darkToggle:active i {
-                  transform: scale(0.9);
-                }
-
-                
-                /* Fallback: Show content if JavaScript fails */
+            #darkToggle {
+            position: relative;
+            overflow: hidden;
+            }
+            #darkToggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+            }
+            #darkToggle:hover::before {
+            transform: translateX(100%);
+            }
+            /* Smooth icon transition */
+            #darkToggle i {
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+            #darkToggle:hover i {
+            transform: rotate(15deg) scale(1.1);
+            }
+            /* Active state animation */
+            #darkToggle:active i {
+            transform: scale(0.9);
+            }
+            /* Fallback: Show content if JavaScript fails */
             .fade-in {
             animation: fadeInFallback 0.1s ease-in 3s forwards;
             }
@@ -320,6 +313,52 @@
                     <div class="flex flex-col items-center">
                         <i data-lucide="settings" class="lucide w-8 h-8 text-accent mb-2" aria-hidden="true"></i>
                         <span class="font-semibold text-sm">Detail-Oriented Problem Solving</span>
+                    </div>
+                </div>
+            </section>
+            <!-- 2. Services Section -->			
+            <section id="services" aria-label="Services" class="scroll-mt-24 mb-16">
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">What I Offer</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Service 1: BI & Analytics -->
+                    <div class="bg-card dark:bg-[#20283A] p-6 rounded-lg shadow border border-neutralBg dark:border-gray-700 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-gray-100">BI Dashboards & Analytics</h3>
+                        <p class="text-sm text-neutralText/80 dark:text-gray-300 mb-4">Custom Power BI dashboards that automate reporting. I clean your messy data and turn it into interactive visuals.</p>
+                        <ul class="text-xs space-y-1 text-neutralText/70 dark:text-gray-400">
+                            <li>• Automated Reporting Pipelines</li>
+                            <li>• SQL Data Extraction</li>
+                            <li>• Sales & Revenue Analysis</li>
+                        </ul>
+                    </div>
+                    <!-- Service 2: Market Research & Synthetic Data -->
+                    <div class="bg-card dark:bg-[#20283A] p-6 rounded-lg shadow border border-neutralBg dark:border-gray-700 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 text-accent">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Synthetic Data & Research</h3>
+                        <p class="text-sm text-neutralText/80 dark:text-gray-300 mb-4">Generating realistic test datasets for software testing and conducting deep-dive competitor market research.</p>
+                        <ul class="text-xs space-y-1 text-neutralText/70 dark:text-gray-400">
+                            <li>• Synthetic Data Generation (Python)</li>
+                            <li>• Competitor Analysis Reports</li>
+                            <li>• Market Trend Forecasting</li>
+                        </ul>
+                    </div>
+                    <!-- Service 3: Career Assets & Training -->
+                    <div class="bg-card dark:bg-[#20283A] p-6 rounded-lg shadow border border-neutralBg dark:border-gray-700 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
+                            <i data-lucide="presentation" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-gray-100">Presentations & Portfolios</h3>
+                        <p class="text-sm text-neutralText/80 dark:text-gray-300 mb-4">Professional assets that get you hired or funded. ATS-friendly CVs, portfolios, and pitch decks.</p>
+                        <ul class="text-xs space-y-1 text-neutralText/70 dark:text-gray-400">
+                            <li>• ATS-Compatible CV Design</li>
+                            <li>• Data Analytics Portfolios</li>
+                            <li>• Corporate Presentations</li>
+                            <li>• Educational/Training Games</li>
+                        </ul>
                     </div>
                 </div>
             </section>
