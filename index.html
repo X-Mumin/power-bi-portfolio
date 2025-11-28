@@ -1,302 +1,629 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" m-0 p-0>
     <head>
-        <meta charset="UTF-8" />
-        <title>Freelance Data Analyst | Dashboards, Research & Career Assets</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Freelance data analyst helping MENA businesses with dashboards, market research, and ATS-optimized career assets. WhatsApp-first communication for Egypt and Gulf clients." />
-        <!-- Simple built-in styling so the page looks good without any external CSS --> 
-        <style> :root { --bg: #0b1020; --bg-alt: #12182b; --card-bg: #151b2f; --accent: #4fd1c5; --accent-soft: rgba(79, 209, 197, 0.1); --text-main: #f9fafb; --text-muted: #9ca3af; --border-subtle: #1f2937; --danger: #22c55e; --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; background: radial-gradient(circle at top, #111827 0, #020617 55%); color: var(--text-main); font-family: var(--font-main); scroll-behavior: smooth; } body { line-height: 1.6; } a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; } header, main, footer, section { width: 100%; } .page { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; } .hero-inner, .section-inner { padding: 24px 20px; border-radius: 16px; background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.98)); border: 1px solid var(--border-subtle); box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55); } .hero-inner { margin-top: 8px; margin-bottom: 32px; position: relative; overflow: hidden; } .hero-inner::before { content: ""; position: absolute; inset: -40%; background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.15) 0, transparent 55%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12) 0, transparent 55%); opacity: 0.8; pointer-events: none; } .hero-content { position: relative; z-index: 1; } .hero-eyebrow { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; } .hero-title { font-size: clamp(2.1rem, 4vw, 2.8rem); letter-spacing: 0.03em; margin: 0 0 12px; } .hero-subtitle { margin: 0 0 8px; font-size: 0.98rem; color: var(--text-muted); max-width: 680px; } .hero-subtitle-ar { margin-top: 6px; font-size: 0.95rem; color: var(--text-main); } .hero-cta { margin: 20px 0 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; } .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; font-weight: 600; padding: 10px 20px; border: 1px solid transparent; cursor: pointer; text-align: center; white-space: normal; } .btn-primary { background: linear-gradient(135deg, #22c55e, #16a34a); color: #022c22; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); } .btn-primary:hover { filter: brightness(1.05); text-decoration: none; } .cta-note { font-size: 0.85rem; color: var(--text-muted); max-width: 560px; } .hero-trust-points { margin: 18px 0 0; padding: 10px 14px; list-style: none; border-radius: 12px; background: rgba(15, 23, 42, 0.7); border: 1px dashed rgba(156, 163, 175, 0.5); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 4px 10px; font-size: 0.85rem; } .hero-trust-points li::before { content: "- "; color: var(--accent); } .section { margin-bottom: 28px; } .section-header h2 { margin: 0 0 6px; font-size: 1.4rem; } .section-header p { margin: 2px 0; font-size: 0.96rem; color: var(--text-muted); } .section-header span[dir="rtl"] { display: block; margin-top: 2px; } .services-grid { margin-top: 16px; display: grid; grid-template-columns: 1fr; gap: 16px; } @media (min-width: 880px) { .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } } .service-card { background: var(--card-bg); border-radius: 14px; padding: 16px 16px 14px; border: 1px solid var(--border-subtle); } .service-card h3 { margin-top: 0; margin-bottom: 6px; font-size: 1.08rem; } .service-card p { margin: 4px 0; font-size: 0.94rem; color: var(--text-muted); } .service-card span[dir="rtl"] { display: block; margin-top: 2px; color: var(--text-main); } .service-card ul { margin: 8px 0 0 18px; padding: 0; font-size: 0.9rem; color: var(--text-main); } .service-card li { margin-bottom: 3px; } .case-studies { margin-top: 16px; display: grid; grid-template-columns: 1fr; gap: 14px; } .case-study { background: var(--card-bg); border-radius: 14px; padding: 14px 16px; border: 1px solid var(--border-subtle); font-size: 0.93rem; } .case-study h3 { margin-top: 0; margin-bottom: 6px; font-size: 1.05rem; } .case-study p { margin: 3px 0; color: var(--text-muted); } .case-study strong { color: var(--text-main); } .case-study-ar span[dir="rtl"] { display: block; margin-top: 4px; color: var(--text-main); } .about-content p { font-size: 0.96rem; color: var(--text-muted); margin: 4px 0 8px; } .about-content span[dir="rtl"] { display: block; margin-top: 4px; color: var(--text-main); } .about-highlights { margin: 6px 0 0 18px; padding: 0; font-size: 0.9rem; } .about-highlights li { margin-bottom: 3px; } .process-steps { margin: 14px 0 0 18px; padding: 0; font-size: 0.93rem; } .process-steps li { margin-bottom: 10px; } .process-steps h3 { margin: 0 0 2px; font-size: 1rem; color: var(--accent); } .process-steps p { margin: 2px 0; color: var(--text-muted); } .process-steps span[dir="rtl"] { display: block; margin-top: 2px; color: var(--text-main); } .contact-actions { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; } .contact-note { font-size: 0.9rem; color: var(--text-muted); } footer { border-top: 1px solid var(--border-subtle); padding: 20px 16px 32px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #020617; } .footer-inner { max-width: 1080px; margin: 0 auto; } /* Arabic direction helper for whole blocks */ .rtl-block { direction: rtl; text-align: right; } </style>
+        <meta charset="UTF-8">
+        <!-- Resource Hints for Performance -->
+        <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+        <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="dns-prefetch" href="https://flagcdn.com">
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mu'min Ahmad | Power BI Analyst | Alexandria, Egypt</title>
+        <li class="dark:text-gray-100" nk rel="icon" type="image/png" href="images/mumin-ahmad-photo.png">
+            <meta name="description" content="Hire Mu'min Ahmad, freelance Power BI Data Analyst in Alexandria, Egypt. 5+ years delivering business intelligence dashboards for MENA markets. Available for remote projects.">
+            <!-- Social Media Preview (Open Graph) -->
+            <meta property="og:title" content="Mu'min Ahmad | Data Analyst & Power BI Specialist Portfolio">
+            <meta property="og:description" content="Transforming Business Data into Actionable Insights. Explore Power BI dashboards, analytics projects, and business impact results.">
+            <meta property="og:image" content="https://mu-bi.netlify.app/images/mumin-ahmad-photo.png">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="https://mu-bi.netlify.app/">
+            <!-- WhatsApp and other platforms use OG image -->
+            <!-- Twitter Card for X (Twitter) -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Mu'min Ahmad | Data Analyst & Power BI Specialist Portfolio">
+            <meta name="twitter:description" content="Transforming Business Data into Actionable Insights. Explore Power BI dashboards and analytics expertise.">
+            <meta name="twitter:image" content="https://mu-bi.netlify.app/images/mumin-ahmad-photo.png">
+            <link rel="canonical" href="https://mu-bi.netlify.app/" />
+            <meta property="og:locale" content="en_US" />
+            <!-- Schema.org Structured Data for SEO -->
+            <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "Person",
+                  "name": "Mu'min Ahmad",
+                  "jobTitle": "Power BI Data Analyst",
+                  "url": "https://mu-bi.netlify.app",
+                  "image": "https://mu-bi.netlify.app/images/mumin-ahmad-photo.png",
+                  "email": "mumin.ahmad@zohomail.com",
+                  "telephone": "+20-10-3309-6839",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Alexandria",
+                    "addressCountry": "EG"
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/in/mumin-ahmad",
+                    "https://flowcv.com/resume/s7ftqur73ss6"
+                  ],
+                  "knowsAbout": ["Power BI", "Data Analysis", "Excel", "SQL", "Python", "Business Intelligence", "Data Visualization"],
+                  "worksFor": {
+                    "@type": "Organization",
+                    "name": "Freelance"
+                  },
+                  "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Alexandria Higher Institute of Engineering & Technology"
+                  }
+                }
+            </script>
+            <!-- Tailwind CSS CDN -->
+            <script src="https://cdn.tailwindcss.com"></script>
+            <!-- Tailwind config: Color accents and fonts -->
+            <script>
+                tailwind.config = {
+                  darkMode: 'class',
+                  theme: {
+                    extend: {
+                      colors: {
+                        primary: '#2563EB',
+                        accent: '#14B8A6',
+                        neutralBg: '#F3F4F6',
+                        neutralText: '#1F2937',
+                        card: '#FFFFFF',
+                        darkBg: '#161C28',
+                        darkCard: '#20283A',
+                        darkAccent: '#20CFC4',
+                        darkBorder: '#283047'
+                      },
+                      fontFamily: {
+                        sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+                        heading: ['Poppins', 'Montserrat', 'Inter', 'sans-serif'],
+                      },
+                    }
+                  }
+                }
+            </script>
+            <!-- Google Fonts -->
+        <li class="dark:text-gray-100" nk href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+            <!-- Lucide Icons CDN -->
+            <script src="https://unpkg.com/lucide@latest" defer></script>
+            <!-- Chart.js CDN -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+            <!-- Icons Style -->
+            <style>
+                .lucide { vertical-align: middle; }
+                /* Fade-in animation for sections */
+                .fade-in {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s cubic-bezier(.38,.8,.48,1), transform 0.8s cubic-bezier(.38,.8,.48,1);
+                }
+                .fade-in.visible {
+                opacity: 1;
+                transform: none;
+                }
+                /* Focus outline styling */
+                :focus { outline: 2px solid #2563EB; outline-offset: 2px; }
+                /* Hamburger animation */
+                .hamburger, .hamburger span { transition: all 0.3s; }
+                .hamburger.open span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+                .hamburger.open span:nth-child(2) { opacity: 0; }
+                .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+                /* Remove focus outline for mouse click, keep for keyboard */
+                a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+                outline: none;
+                box-shadow: none;
+                }
+                /* Screen reader only - visible on focus */
+                .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+                }
+                .sr-only:focus {
+                position: absolute;
+                width: auto;
+                height: auto;
+                padding: 0.5rem 1rem;
+                margin: 0;
+                overflow: visible;
+                clip: auto;
+                white-space: normal;
+                }
+            </style>
     </head>
-    <body>
-        <div class="page">
-            <!-- HERO --> 
-            <header id="hero" class="hero">
-                <div class="hero-inner">
-                    <div class="hero-content">
-                        <p class="hero-eyebrow"> Freelance Data Analyst &amp; Power BI Specialist for MENA </p>
-                        <h1 class="hero-title"> Data Dashboards &amp; Analysis for MENA Businesses </h1>
-                        <p class="hero-subtitle"> Custom Power BI, Excel, and Python solutions that turn your raw data into clear dashboards, market insights, and decision-ready reports. Work directly with a freelance data analyst who understands both engineering detail and business outcomes. </p>
-                        <p class="hero-subtitle hero-subtitle-ar rtl-block"> تحليلات ولوحات بيانات احترافية لقرارات أعمال أسرع، مع حلول مخصصة باستخدام Power BI وExcel وPython لتحويل بياناتك الخام إلى تقارير واضحة ورؤى عملية تدعم قراراتك في مصر والخليج. </p>
-                        <div class="hero-cta">
-                            <!-- TODO: replace href with your real WhatsApp wa.me link -->
-                            <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener">
-                            <span>Message me on WhatsApp for a free 15-minute project review</span>
-                            </a>
-                            <p class="rtl-block" style="font-size:0.9rem; color:var(--text-main); margin:0;">
-                                راسلني على واتساب للحصول على مراجعة مجانية وسريعة لمشروعك.
-                            </p>
-                            <p class="cta-note">
-                                Share a quick voice note or text about your data and goals, and receive a tailored plan, timeline, and quote.
-                                <span class="rtl-block">
-                                أرسل ملاحظة صوتية أو رسالة نصية عن بياناتك وهدفك، وسأرسل لك خطة مخصصة مع مدة التنفيذ والتكلفة المتوقعة.
-                                </span>
-                            </p>
-                        </div>
-                        <ul class="hero-trust-points">
-                            <li>5+ years across analytics, implementation, and mechatronics engineering.</li>
-                            <li>DEPI-trained Microsoft Power BI Data Analyst.</li>
-                            <li>WhatsApp-first communication for Egypt &amp; Gulf clients.</li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <!-- SERVICES -->
-                <section id="services" class="section">
-                    <div class="section-inner">
-                        <header class="section-header">
-                            <h2>Services &amp; Packages</h2>
-                            <p>
-                                Clear, outcome-focused offers you can book directly via WhatsApp. Each package can be customized to your data, tools, and budget.
-                            </p>
-                            <p class="rtl-block">
-                                خدمات واضحة يمكن حجزها مباشرة عبر واتساب، مع إمكانية تعديل كل باقة حسب بياناتك وأدواتك وميزانيتك.
-                            </p>
-                        </header>
-                        <div class="services-grid">
-                            <!-- Offer 1 -->
-                            <article class="service-card">
-                                <h3>Dashboards &amp; Business Reporting (Power BI, Excel &amp; Python)</h3>
-                                <p>
-                                    End-to-end dashboard and reporting solutions that connect your data sources, clean and model the data, and present it in clear visual dashboards for your decision-makers.
-                                    Ideal for managers who need to monitor sales, operations, finance, or performance in real time without building an internal BI team.
-                                </p>
-                                <p class="rtl-block">
-                                    حل متكامل لربط مصادر بياناتك وتنظيفها وتحويلها إلى لوحات تحكم بصرية واضحة تساعد صانعي القرار في شركتك. مناسب للمديرين الذين يحتاجون إلى متابعة المبيعات أو العمليات أو الأداء في الوقت الفعلي بدون فريق تحليلات داخلي كبير.
-                                </p>
-                                <ul>
-                                    <li>Requirements workshop to define KPIs, metrics, and decision questions.</li>
-                                    <li>Data analysis, cleaning, modeling, and automation using Power BI, Excel, and programming (Python, C, C++).</li>
-                                    <li>Synthetic data generation when needed to safely demo or test dashboards without exposing sensitive data.</li>
-                                    <li>Interactive dashboards with filters, drill-downs, and mobile-friendly views.</li>
-                                    <li>Executive-ready presentation design to explain key findings and recommendations.</li>
-                                </ul>
-                            </article>
-                            <!-- Offer 2 -->
-                            <article class="service-card">
-                                <h3>Market &amp; Competitor Research for MENA</h3>
-                                <p>
-                                    Structured research and data-driven analysis of your market, competitors, and customers in Egypt and the Gulf.
-                                    Get clear summaries, charts, and recommendations to support market entry, product launches, or pricing decisions.
-                                </p>
-                                <p class="rtl-block">
-                                    تحليل منظم للسوق والمنافسين والعملاء باستخدام بيانات موثوقة وتقارير واضحة تدعم قرارات دخول سوق جديدة أو إطلاق منتج أو تعديل الأسعار في مصر والخليج.
-                                </p>
-                                <ul>
-                                    <li>Competitor study &amp; market research on positioning, pricing, and product features.</li>
-                                    <li>Data analysis of internal or public data to quantify trends and opportunities.</li>
-                                    <li>Clear visual reports and presentation design for management or investors.</li>
-                                    <li>Synthetic data generation where needed to model scenarios and stress-test strategies.</li>
-                                    <li>Optional ongoing updates (monthly or quarterly) to keep insights fresh.</li>
-                                </ul>
-                            </article>
-                            <!-- Offer 3 -->
-                            <article class="service-card">
-                                <h3>ATS‑Optimized CV, Portfolio &amp; Data Storytelling</h3>
-                                <p>
-                                    Professional career materials tailored for data and technical profiles, designed to pass ATS filters and impress hiring managers or freelance clients.
-                                    Ideal if you want your experience in Power BI, Excel, Python, or analytics to be presented clearly and persuasively.
-                                </p>
-                                <p class="rtl-block">
-                                    إنشاء سيرة ذاتية متوافقة مع أنظمة تتبع المتقدمين (ATS) مع ملف أعمال وعروض تقديمية تُظهر مشاريعك في تحليل البيانات ولوحات التحكم بشكل بسيط ومقنع لأصحاب العمل والعملاء.
-                                </p>
-                                <ul>
-                                    <li>ATS‑optimized CV writing aligned with your target roles and keywords.</li>
-                                    <li>Portfolio creation for your dashboards, reports, and Python projects.</li>
-                                    <li>Presentation design with strong data storytelling for interviews or client pitches.</li>
-                                    <li>Guidance on how to present your projects using clear business outcomes.</li>
-                                    <li>Optional LinkedIn profile optimization based on the same narrative.</li>
-                                </ul>
-                            </article>
-                            <!-- Offer 4 -->
-                            <article class="service-card">
-                                <h3>Educational Data‑Driven Games &amp; Learning Tools</h3>
-                                <p>
-                                    Custom educational games and interactive tools that use real or synthetic data to teach concepts in math, engineering, or business.
-                                    Suitable for training teams, students, or customers through engaging, hands‑on experiences.
-                                </p>
-                                <p class="rtl-block">
-                                    تطوير ألعاب وأدوات تعليمية تفاعلية تعتمد على بيانات حقيقية أو اصطناعية لشرح مفاهيم في الهندسة أو الأعمال أو التحليل بطريقة ممتعة وعملية.
-                                </p>
-                                <ul>
-                                    <li>Educational game development using programming (Python, C, C++ and more).</li>
-                                    <li>Synthetic data generation to simulate realistic scenarios without exposing confidential data.</li>
-                                    <li>Clear learning objectives and scoring/feedback mechanisms.</li>
-                                    <li>Data tracking to measure engagement and learning outcomes.</li>
-                                    <li>Documentation for educators or trainers on how to use and adapt the tools.</li>
-                                </ul>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-                <!-- CASE STUDIES -->
-                <section id="portfolio" class="section">
-                    <div class="section-inner">
-                        <header class="section-header">
-                            <h2>Case Studies &amp; Portfolio</h2>
-                            <p>
-                                A selection of projects that show how data analysis, dashboards, and research have helped real organizations make better decisions.
-                            </p>
-                            <p class="rtl-block">
-                                نماذج مختارة من المشاريع توضح كيف ساعد التحليل ولوحات التحكم والدراسات السوقية مؤسسات حقيقية على اتخاذ قرارات أفضل.
-                            </p>
-                        </header>
-                        <div class="case-studies">
-                            <article class="case-study">
-                                <h3>MENA Retail Authority Dashboard (Power BI)</h3>
-                                <p><strong>Client / context:</strong> Regional retail authority overseeing multiple markets in MENA.</p>
-                                <p><strong>Problem:</strong> Leadership needed a single source of truth on revenue, growth, and market share across countries, but data was scattered in different systems.</p>
-                                <p><strong>What I did:</strong> Built a multi‑page Power BI dashboard with DAX measures for YoY growth, market share, and revenue trends, plus drill‑through navigation and dynamic slicers for country, channel, and product.</p>
-                                <p><strong>Result:</strong> Decision‑makers could compare performance across markets in minutes instead of hours, improving the speed and quality of planning meetings.</p>
-                                <p class="case-study-ar rtl-block">
-                                    قمت بتصميم لوحة تحكم تفاعلية في Power BI لهيئة تجزئة إقليمية في منطقة الشرق الأوسط وشمال أفريقيا، جمعت بيانات المبيعات من عدة أسواق ووفرت مؤشرات واضحة للنمو والحصة السوقية، مما سهّل على الإدارة اتخاذ قرارات أسرع وأكثر دقة.
-                                </p>
-                            </article>
-                            <article class="case-study">
-                                <h3>Retail Market Analysis Dashboard (Excel)</h3>
-                                <p><strong>Client / context:</strong> Retail business tracking sales, inventory, and customer segments in one country.</p>
-                                <p><strong>Problem:</strong> Management relied on manual spreadsheets that were slow to update and hard to interpret.</p>
-                                <p><strong>What I did:</strong> Developed an Excel‑based dashboard using advanced pivot tables, dynamic charts, and conditional formatting to monitor sales performance, inventory turnover, and customer segments in near real time.</p>
-                                <p><strong>Result:</strong> The team gained a live view of key metrics and could react faster to slow‑moving products and stock‑outs.</p>
-                                <p class="case-study-ar rtl-block">
-                                    أنشأت لوحة تحكم متقدمة في Excel لسلسلة تجزئة، حولت الجداول اليدوية إلى تقارير ديناميكية تتابع المبيعات والمخزون وشرائح العملاء أولاً بأول، مما ساعد الإدارة على التدخل مبكرًا في المشكلات واتخاذ قرارات أفضل.
-                                </p>
-                            </article>
-                            <article class="case-study">
-                                <h3>Procurement Cost Optimization (Manufacturing)</h3>
-                                <p><strong>Client / context:</strong> Battery manufacturing company managing multiple suppliers.</p>
-                                <p><strong>Problem:</strong> Procurement costs and lead times were higher than necessary due to limited visibility into vendor performance.</p>
-                                <p><strong>What I did:</strong> Analyzed vendor data, researched and evaluated more than 10 vendors, and supported negotiations based on quantified price, quality, and delivery metrics.</p>
-                                <p><strong>Result:</strong> Procurement costs were reduced by around 50% (150K EGP) and lead times shortened by 40%.</p>
-                                <p class="case-study-ar rtl-block">
-                                    قمت بتحليل بيانات الموردين في شركة تصنيع بطاريات ومقارنة أكثر من 10 موردين وفقًا للسعر والجودة ومدة التوريد، مما ساهم في خفض تكلفة المشتريات بحوالي 50٪ وتقليل زمن التوريد بنسبة 40٪.
-                                </p>
-                            </article>
-                            <article class="case-study">
-                                <h3>Banking Implementation Support &amp; User Adoption</h3>
-                                <p><strong>Client / context:</strong> Banking technology implementation for financial institutions.</p>
-                                <p><strong>Problem:</strong> Users struggled to adopt new systems due to limited training and unclear documentation.</p>
-                                <p><strong>What I did:</strong> Documented systems, configured web applications to meet banking requirements, and trained more than 25 users.</p>
-                                <p><strong>Result:</strong> User adoption increased by about 60%, and support teams received fewer basic questions.</p>
-                                <p class="case-study-ar rtl-block">
-                                    دعمت تنفيذ نظام مصرفي جديد من خلال توثيق الحلول وتكوين التطبيقات وتدريب أكثر من 25 مستخدمًا، مما أدى إلى رفع معدل التبنّي بحوالي 60٪ وتقليل الضغط على فريق الدعم.
-                                </p>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-                <!-- ABOUT -->
-                <section id="about" class="section">
-                    <div class="section-inner">
-                        <header class="section-header">
-                            <h2>About Your Data Partner</h2>
-                        </header>
-                        <div class="about-content">
-                            <p>
-                                As a freelance data analyst with a Mechatronics engineering background, I help businesses in Egypt and the Gulf turn messy data into clear dashboards, reports, and decisions.
-                                With experience across analytics, implementation, and operations, I focus on practical outcomes: faster reporting cycles, cost savings, and better visibility for managers and founders.
-                                You get a partner who is detail‑oriented, responsive on WhatsApp, and serious about deadlines.
-                            </p>
-                            <p class="rtl-block">
-                                أنا محلل بيانات حر بخلفية هندسة ميكاترونيكس وتدريب متخصص في مجال ذكاء الأعمال. أعمل مع شركات في مصر والخليج لتحويل بياناتها المتفرقة إلى لوحات تحكم وتقارير عملية تدعم الإدارة في اتخاذ القرار. ألتزم بالاحترافية واحترام المواعيد والتواصل الواضح عبر واتساب طوال فترة المشروع.
-                            </p>
-                            <ul class="about-highlights">
-                                <li>DEPI‑trained Microsoft Power BI Data Analyst.</li>
-                                <li>Mechatronics engineering graduate with strong analytical and problem‑solving skills.</li>
-                                <li>Track record of reducing procurement costs by around 50% and shortening lead times by 40%.</li>
-                                <li>Experience training 25+ users and increasing system adoption by about 60%.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <!-- PROCESS -->
-                <section id="process" class="section">
-                    <div class="section-inner">
-                        <header class="section-header">
-                            <h2>Process &amp; Timelines</h2>
-                            <p>
-                                A simple, transparent process so you know exactly what happens after you send a WhatsApp message.
-                            </p>
-                            <p class="rtl-block">
-                                عملية تنفيذ واضحة وبسيطة توضح لك ما يحدث بعد أول رسالة واتساب.
-                            </p>
-                        </header>
-                        <ol class="process-steps">
-                            <li>
-                                <h3>Step 1 – WhatsApp Brief (Same Day)</h3>
-                                <p>
-                                    You send a short message or voice note on WhatsApp explaining your business, data sources, and what you want to achieve.
-                                </p>
-                                <p class="rtl-block">
-                                    ترسل رسالة نصية أو صوتية عبر واتساب تشرح فيها نشاطك ومصادر بياناتك والنتيجة التي تريد الوصول إليها.
-                                </p>
-                            </li>
-                            <li>
-                                <h3>Step 2 – Sample &amp; Proposal (1–2 business days)</h3>
-                                <p>
-                                    You receive a short sample idea, scope outline, timeline, and price range, so you can confirm we are aligned before any full build.
-                                </p>
-                                <p class="rtl-block">
-                                    أرسل لك تصورًا مبدئيًا للحل مع نطاق العمل ومدة التنفيذ والتكلفة المتوقعة لتأكيد الاتفاق قبل بدء التنفيذ الكامل.
-                                </p>
-                            </li>
-                            <li>
-                                <h3>Step 3 – Build &amp; Feedback (3–7 business days)</h3>
-                                <p>
-                                    I design and build your dashboard, report, research, CV, portfolio, or educational game, sharing one or two checkpoints for your feedback.
-                                </p>
-                                <p class="rtl-block">
-                                    أقوم بتنفيذ لوحة التحكم أو التقرير أو الدراسة أو السيرة الذاتية أو اللعبة التعليمية، مع نقاط مراجعة بينية للحصول على ملاحظاتك وتعديلاتك.
-                                </p>
-                            </li>
-                            <li>
-                                <h3>Step 4 – Final Delivery &amp; Support (1–2 business days)</h3>
-                                <p>
-                                    You receive final files, documentation, and a short walkthrough, plus a support window for small adjustments.
-                                </p>
-                                <p class="rtl-block">
-                                    تحصل على الملفات النهائية مع شرح مبسط لكيفية استخدامها، بالإضافة إلى فترة دعم قصيرة لإجراء أي تعديلات بسيطة.
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-                </section>
-                <!-- CONTACT -->
-                <section id="contact" class="section">
-                    <div class="section-inner">
-                        <header class="section-header">
-                            <h2>Contact &amp; WhatsApp</h2>
-                            <p>
-                                Ready to discuss a project? Send a WhatsApp message with a short description of your business, your main goal, your data sources (Excel, database, CRM, etc.), your ideal deadline, and your approximate budget range.
-                                Within 12 working hours, you will receive a clear response with next steps, a suggested approach, and a transparent quote.
-                            </p>
-                            <p class="rtl-block">
-                                هل تريد مناقشة مشروع؟ أرسل رسالة واتساب توضح فيها مجال نشاطك، والهدف الرئيسي من التحليل أو لوحة التحكم، ونوع البيانات المتاحة مثل Excel أو قواعد بيانات أو CRM، وموعدك النهائي المفضل، والميزانية التقريبية. سأرد عليك خلال 12 ساعة عمل بخطة مبدئية وخطوات التنفيذ والتكلفة المتوقعة بكل وضوح.
-                            </p>
-                        </header>
-                        <div class="contact-actions">
-                            <!-- TODO: replace href with your real WhatsApp wa.me link -->
-                            <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener">
-                            <span>Open WhatsApp &amp; share your project</span>
-                            </a>
-                            <p class="rtl-block" style="font-size:0.9rem; color:var(--text-main); margin:0;">
-                                افتح واتساب وشارك تفاصيل مشروعك الآن.
-                            </p>
-                            <p class="contact-note">
-                                Preferred contact: WhatsApp for quick, reliable responses.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-        <footer>
-            <div class="footer-inner">
-                <p>&copy; <span id="year"></span> Freelance Data Analyst – Dashboards, Research &amp; Career Assets.</p>
-                <p>Alexandria, Egypt — serving clients across Egypt and the Gulf.</p>
-            </div>
-        </footer>
-        <script> Simple script to keep the year updated (function () { var yearSpan = document.getElementById('year'); if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); } })(); </script> 
+    <body class="m-0 p-0 bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth duration-200">
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">
+    Skip to main content
+    </a>
+    <!-- <body class="bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth"> -->
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 backdrop-blur shadow transition-shadow transition-colors">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Main Navigation">
+    <!-- Left: Branding -->
+    <div class="flex items-center gap-3">
+    <a href="#main-content" class="text-xl font-heading font-bold text-primary">Mu'min Ahmad</a>
+    <a href="#contact" class="px-3 py-1 rounded-full bg-teal-700 text-white text-xs font-bold shadow hover:bg-primary hover:text-card transition">Available for Freelance</a>
+    </div>
+    <!-- Center: Navigation links (hide on mobile) -->
+    <ul id="navMenu" class="hidden lg:flex items-center gap-4 font-semibold">
+    <li class="dark:text-gray-100"><a href="#main-content" class="py-2 px-3 hover:text-accent" aria-current="page">Home</a></li>
+    <li class="dark:text-gray-100"><a href="#about" class="py-2 px-3 hover:text-accent">About</a></li>
+    <li class="dark:text-gray-100"><a href="#projects" class="py-2 px-3 hover:text-accent">Projects</a></li>
+    <li class="dark:text-gray-100"><a href="#skills" class="py-2 px-3 hover:text-accent">Skills</a></li>
+    <li class="dark:text-gray-100"><a href="#experience" class="py-2 px-3 hover:text-accent">Experience</a></li>
+    <li class="dark:text-gray-100"><a href="#contact" class="py-2 px-3 hover:text-accent">Contact</a></li>
+    </ul>
+    <!-- Right: Actions -->
+    <div class="flex items-center gap-2">
+    <button id="navToggle" aria-label="Toggle navigation" class="hamburger lg:hidden p-2 rounded focus:outline-none" tabindex="0">
+    <span class="block w-6 h-1 mb-1 bg-primary"></span>
+    <span class="block w-6 h-1 mb-1 bg-primary"></span>
+    <span class="block w-6 h-1 bg-primary"></span>
+    </button>
+    <button id="darkToggle" aria-label="Toggle dark mode" class="p-2 rounded bg-neutralBg text-primary border border-neutralText hover:bg-darkBg hover:text-accent transition">
+    <i data-lucide="moon" class="lucide w-5 h-5"></i>
+    </button>
+    </div>
+    </nav>
+    </header>
+    <!-- Main Content Container -->
+    <main id="main-content" class="pt-28 lg:pt-32 mx-auto max-w-6xl px-4">
+    <!-- 1. Hero Section -->
+    <section aria-label="Hero Section" class="fade-in mb-16 flex flex-col md:flex-row items-center justify-between">
+    <!-- Hero Left -->
+    <div class="flex-1 md:pr-8">
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-4">
+    <span class="block text-primary dark:text-accent">Microsoft Power BI Data Analyst</span>
+    <span class="block text-neutralText dark:text-gray-100">
+    Transforming Business Data<br>
+    <span class="text-accent dark:text-primary">into Actionable Insights</span>
+    </span>
+    </h1>
+    <p class="text-lg md:text-xl text-neutralText mb-6 dark:text-gray-200 mb-6 font-medium">
+    5+ years of experience in analytics, mechatronics, and business intelligence—expert in dashboard automation, statistical analysis, and data storytelling.
+    </p>
+    <div class="flex items-center gap-3 mb-2">
+    <span class="inline-block px-3 py-1 rounded-full font-semibold bg-primary text-card text-sm">
+    Alexandria, Egypt
+    </span>
+    <span class="inline-block" aria-label="Egypt Flag">
+    <img src="https://flagcdn.com/eg.svg" alt="Egypt Flag" class="w-5 h-5 rounded shadow" />
+    </span>
+    </div>
+    <p class="text-xs text-neutralText/70 dark:text-gray-400 mb-3">Preferred contact: WhatsApp for quick responses</p>
+    </div>
+    <!-- Hero Right: Headshot Placeholder -->
+    <div class="flex-1 flex justify-center items-start pt-4 md:pt-0">
+    <img src="images/mumin-ahmad-photo.png" alt="Mu'min Ahmad, Power BI Data Analyst based in Alexandria, Egypt" class="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full object-cover shadow-lg transition-all duration-200 -mt-8 md:-mt-12" />
+    </div>
+    </section>
+    <!-- CTAs -->
+    <div class="w-full max-w-6xl mx-auto flex flex-col md:flex-row gap-4 py-4 px-4 my-10">
+    <!-- View Projects -->
+    <a href="#projects" class="bg-primary dark:bg-[#2563EB] text-card dark:text-white flex-1 flex items-center justify-center px-5 py-4 rounded-lg bg-primary text-white font-bold shadow-lg hover:bg-teal-700 dark:bg-[#20CFC4] text-card dark:text-white transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="View Projects">
+    <i data-lucide="folder-open" class="lucide w-5 h-5 mr-2"></i> View Projects
+    </a>
+    <!-- Download Resume -->
+    <a href="https://flowcv.com/resume/s7ftqur73ss6" target="_blank" rel="noopener noreferrer" class="bg-primary dark:bg-[#2563EB] text-card dark:text-white flex-1 flex items-center justify-center px-5 py-4 rounded-lg bg-teal-700 dark:bg-[#20CFC4] text-card dark:text-white text-white font-semibold shadow-lg hover:bg-primary transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent"
+        aria-label="Download Resume">
+    <i data-lucide="download" class="lucide w-5 h-5 mr-2"></i> Download Resume
+    </a>
+    <!-- WhatsApp Chat -->
+    <a href="https://wa.me/201033096839?text=Hi%20Mu'min%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project!" target="_blank" rel="noopener noreferrer" class="bg-primary dark:bg-[#2563EB] text-card dark:text-white flex-1 flex items-center justify-center px-5 py-4 rounded-lg bg-white border-2 border-primary text-primary font-semibold shadow-lg hover:bg-teal-700 dark:bg-[#20CFC4] text-card dark:text-white hover:border-accent hover:text-white transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="lucide w-5 h-5 mr-2"></i> Chat on WhatsApp
+    </a>
+    </div>
+    <!-- 2. About Section -->
+    <section id="about" aria-label="About Me" class="scroll-mt-24 fade-in mb-16">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">About Me</h2>
+    <div class="w-full text-neutralText dark:text-gray-100 leading-relaxed mb-6 space-y-4">
+    <p class="dark:text-gray-100">
+    I am an analytical and DEPI-trained Data Analyst with 5 years of technical experience rooted in Mechatronics Engineering. I specialize in transforming complex business data into actionable, stakeholder-impactful insights—leveraging advanced dashboard
+    automation, Excel, Power BI, and data storytelling to drive business-centric analytics projects. I thrive on hands-on problem-solving, rapid learning, and collaborating in innovative, growth-driven environments.
+    </p>
+    <p class="dark:text-gray-100">
+    Known for being detail-oriented, adaptable, and results-focused, I excel at producing precise analyses and building solutions that align with organizational goals. My expertise spans statistical analysis, business intelligence, and fast implementation
+    of reporting strategies. I am committed to using data-driven decision-making to unlock performance improvements and support strategic business growth.
+    </p>
+    <p class="dark:text-gray-100">
+    I thrive in environments that value precision, continuous learning, and innovation. I'm passionate about leveraging data to drive performance improvements and support better decision-making across diverse business contexts.
+    </p>
+    </div>
+    <!-- Core Skills Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4" aria-label="Core Skills">
+    <div class="flex flex-col items-center">
+    <i data-lucide="bar-chart-2" class="lucide w-8 h-8 text-primary mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Power BI</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="table" class="lucide w-8 h-8 text-accent mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Excel & Power Query</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="database" class="lucide w-8 h-8 text-primary mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">SQL</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="code" class="lucide w-8 h-8 text-accent mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Python</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="activity" class="lucide w-8 h-8 text-primary mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Statistical Analysis</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="briefcase" class="lucide w-8 h-8 text-accent mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Business Analytics</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="message-square" class="lucide w-8 h-8 text-primary mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Data Storytelling</span>
+    </div>
+    <div class="flex flex-col items-center">
+    <i data-lucide="settings" class="lucide w-8 h-8 text-accent mb-2" aria-hidden="true"></i>
+    <span class="font-semibold text-sm">Detail-Oriented Problem Solving</span>
+    </div>
+    </div>
+    </section>
+    <!-- 3. Projects/Portfolio Section -->
+    <section id="projects" aria-label="Projects" class="scroll-mt-24 fade-in mb-16">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">Featured Projects</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+    <!-- Project 1: MENA Retail Authority Dashboard (Power BI) -->
+    <div class="bg-card dark:bg-[#20283A] p-5 rounded-lg shadow group transition hover:scale-105 hover:shadow-lg border border-neutralBg flex flex-col justify-between">
+    <img src="images/MENA-Retail-Authority-Dashboard.png" alt="MENA Retail Authority Dashboard Screenshot" loading="lazy" class="w-full h-40 mb-4 rounded-lg object-cover" />
+    <h3 class="text-xl font-semibold text-primary dark:text-accent mb-2">MENA Retail Authority Dashboard</h3>
+    <p class="text-neutralText dark:text-gray-300 mb-2">
+    Interactive Power BI dashboard analyzing regional retail performance across MENA markets. Developed multi-page report with drill-through navigation, DAX-calculated KPIs (YoY growth, market share, revenue trends), and dynamic slicers for stakeholder decision
+    support.
+    </p>
+    <span class="inline-block px-3 py-1 rounded-full bg-teal-700 text-sm font-bold text-card mb-2">Performance Insights</span>
+    <div class="flex flex-wrap gap-2 mb-3">
+    <span class="px-2 py-1 rounded-full bg-primary text-card text-xs text-neutralText/70 dark:text-gray-400">Power BI</span>
+    <span class="px-2 py-1 rounded-full bg-teal-700 text-card text-xs text-neutralText/70 dark:text-gray-400">DAX</span>
+    <span class="px-2 py-1 rounded-full bg-primary text-card text-xs text-neutralText/70 dark:text-gray-400">Power Query</span>
+    <span class="px-2 py-1 rounded-full bg-teal-700 text-card text-xs text-neutralText/70 dark:text-gray-400">Data Modeling</span>
+    </div>
+    <a href="https://www.linkedin.com/posts/mumin-ahmad_efbf04-depi-powerbi-activity-7358952710102036481-WLSn/" target="_blank" rel="noopener noreferrer" aria-label="View Details" class="inline-block mt-auto px-5 py-2 bg-primary text-card font-semibold rounded shadow hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-primary">View Details</a>
+    </div>
+    <!-- Project 2: Retail Market Analysis Dashboard (Excel) -->
+    <div class="bg-card dark:bg-[#20283A] p-5 rounded-lg shadow group transition hover:scale-105 hover:shadow-lg border border-neutralBg flex flex-col justify-between">
+    <img src="images/Retail-Market-Analysis-Dashboard.png" alt="Retail Market Analysis Dashboard Screenshot" loading="lazy" class="w-full h-40 mb-4 rounded-lg object-cover" />
+    <h3 class="text-xl font-semibold text-primary dark:text-accent mb-2">Retail Market Analysis Dashboard</h3>
+    <p class="text-neutralText dark:text-gray-300 mb-2">
+    Comprehensive Excel-based dashboard automating retail market metrics. Built advanced pivot tables, conditional formatting, and dynamic charts for real-time monitoring of sales performance, inventory turnover, and customer segmentation.
+    </p>
+    <span class="inline-block px-3 py-1 rounded-full bg-teal-700 text-sm font-bold text-card mb-2">Real-Time Monitoring</span>
+    <div class="flex flex-wrap gap-2 mb-3">
+    <span class="px-2 py-1 rounded-full bg-teal-700 text-card text-xs text-neutralText/70 dark:text-gray-400">Excel</span>
+    <span class="px-2 py-1 rounded-full bg-primary text-card text-xs text-neutralText/70 dark:text-gray-400">Power Query</span>
+    <span class="px-2 py-1 rounded-full bg-teal-700 text-card text-xs text-neutralText/70 dark:text-gray-400">Pivot Tables</span>
+    <span class="px-2 py-1 rounded-full bg-primary text-card text-xs text-neutralText/70 dark:text-gray-400">Data Visualization</span>
+    </div>
+    <a href="https://www.linkedin.com/posts/mumin-ahmad_dataanalytics-bootcamp-powerpivot-activity-7371168665192443904-vNqC/" target="_blank" rel="noopener noreferrer" aria-label="View Details" class="inline-block mt-auto px-5 py-2 bg-primary text-card font-semibold rounded shadow hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-primary">View Details</a>
+    </div>
+    </div>
+    <div class="mt-4 flex justify-center">
+    <a href="#" aria-label="View All Projects" class="px-6 py-2 rounded bg-teal-700 text-card font-semibold shadow hover:bg-primary transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent">View All Projects</a>
+    </div>
+    </section>
+    <!-- 4. Skills & Expertise Section -->
+    <section id="skills" aria-label="Skills" class="scroll-mt-24 fade-in mb-16">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">Skills</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+    <!-- Column 1: Technical Skills -->
+    <div>
+    <h3 class="text-lg font-bold text-accent dark:text-primary mb-3">Technical</h3>
+    <ul class="list-disc pl-5 text-neutralText dark:text-gray-100 space-y-2">
+    <li class="dark:text-gray-100"><b>Power BI (Advanced):</b> Dashboard Design, DAX, Data Modeling, Power Query</li>
+    <li class="dark:text-gray-100"><b>Excel (Advanced):</b> Pivot Tables, Power Query, Advanced Formulas, Automation</li>
+    <li class="dark:text-gray-100"><b>SQL (Intermediate):</b> Query Optimization, Data Extraction, Joins, Aggregation</li>
+    <li class="dark:text-gray-100"><b>Python (Intermediate):</b> Pandas, Data Cleaning, Statistical Analysis, Matplotlib</li>
+    <li class="dark:text-gray-100"><b>Statistical Analysis:</b> Descriptive Statistics, Trend Analysis, KPI Design</li>
+    </ul>
+    </div>
+    <!-- Column 2: Professional Competencies -->
+    <div>
+    <h3 class="text-lg font-bold text-accent dark:text-primary mb-3">Soft</h3>
+    <ul class="list-disc pl-5 text-neutralText dark:text-gray-100 space-y-2">
+    <li class="dark:text-gray-100"><b>Data Storytelling:</b> Translating complex data into clear, stakeholder-ready narratives</li>
+    <li class="dark:text-gray-100"><b>Business Analytics:</b> Aligning data insights with strategic business objectives</li>
+    <li class="dark:text-gray-100"><b>Dashboard Automation:</b> Building scalable, automated reporting solutions</li>
+    <li class="dark:text-gray-100"><b>Detail-Oriented:</b> Ensuring accuracy and reliability in data processing</li>
+    <li class="dark:text-gray-100"><b>Fast Learner:</b> Rapidly adapting to new tools, methodologies, and domains</li>
+    <li class="dark:text-gray-100"><b>Situational Awareness:</b> Understanding context and tailoring analyses accordingly</li>
+    </ul>
+    </div>
+    </div>
+    </section>
+    <!-- 5. Experience Section -->
+    <section id="experience" aria-label="Professional Experience" class="scroll-mt-24 fade-in mb-16">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">Professional Experience</h2>
+    <div class="space-y-6">
+    <!-- Entry 1: DEPI Trainee -->
+    <div class="flex items-start space-x-4 p-5 bg-card dark:bg-[#20283A] rounded-lg shadow border border-neutralBg transition hover:shadow-lg">
+    <div>
+    <i data-lucide="bar-chart-horizontal" class="lucide w-8 h-8 text-primary" aria-hidden="true"></i>
+    </div>
+    <div>
+    <p class="text-primary dark:text-accent font-semibold mb-1">Microsoft Power BI Data Analyst Trainee</p>
+    <p class="text-neutralText dark:text-gray-400 font-medium text-xs">Digital Egypt Pioneers Initiative (DEPI) | July 2025 – Present | Alexandria, Egypt</p>
+    <p class="text-neutralText dark:text-gray-300 text-sm mt-2">
+    Developed interactive Power BI dashboards for business decision support; conducted statistical analyses generating actionable insights driving performance.
+    </p>
+    </div>
+    </div>
+    <!-- Entry 2: Data Gear -->
+    <div class="flex items-start space-x-4 p-5 bg-card dark:bg-[#20283A] rounded-lg shadow border border-neutralBg transition hover:shadow-lg">
+    <div>
+    <i data-lucide="users" class="lucide w-8 h-8 text-accent" aria-hidden="true"></i>
+    </div>
+    <div>
+    <p class="text-primary dark:text-accent font-semibold mb-1">Junior Implementation Specialist</p>
+    <p class="text-neutralText dark:text-gray-400 font-medium text-xs">Data Gear | January 2023 – December 2024 | Cairo, Egypt</p>
+    <p class="text-neutralText dark:text-gray-300 text-sm mt-2">
+    Documented systems and trained 25+ users, boosting adoption by 60%; supported UAT and configured web applications to meet banking requirements.
+    </p>
+    </div>
+    </div>
+    <!-- Entry 3: Elnisr Batteries -->
+    <div class="flex items-start space-x-4 p-5 bg-card dark:bg-[#20283A] rounded-lg shadow border border-neutralBg transition hover:shadow-lg">
+    <div>
+    <i data-lucide="settings" class="lucide w-8 h-8 text-primary" aria-hidden="true"></i>
+    </div>
+    <div>
+    <p class="text-primary dark:text-accent font-semibold mb-1">Electromechanical Preparation Engineer</p>
+    <p class="text-neutralText dark:text-gray-400 font-medium text-xs">Elnisr Batteries | September 2019 – December 2022 | Sadat City, Egypt</p>
+    <p class="text-neutralText dark:text-gray-300 text-sm mt-2">
+    Researched and evaluated 10+ vendors, cutting procurement costs by 50% (150K EGP) and shortening lead times by 40%.
+    </p>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- 6. Education & Certifications Section -->
+    <section id="education" aria-label="Education & Training" class="scroll-mt-24 fade-in mb-16">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">Education & Training</h2>
+    <div class="space-y-4">
+    <div class="bg-card dark:bg-[#20283A] rounded-lg shadow p-5 border border-neutralBg">
+    <p class="font-bold text-accent mb-1">Bachelor's Degree in Mechatronics Engineering</p>
+    <p class="text-neutralText dark:text-gray-300 text-sm">Alexandria Higher Institute of Engineering & Technology (AIET)</p>
+    <p class="text-xs text-neutralText/70 dark:text-gray-400">GPA: 3.3/4.0 (Very Good)
+    <br>September 2012 – May 2017 | Alexandria, Egypt</p>
+    </div>
+    <div class="bg-card dark:bg-[#20283A] rounded-lg shadow p-5 border border-neutralBg">
+    <p class="font-bold text-primary mb-1">Courses & Certifications</p>
+    <ul class="list-disc pl-5 text-neutralText dark:text-gray-100 text-sm">
+    <li class="dark:text-gray-100">Introduction to Excel</li>
+    <li class="dark:text-gray-100">Introduction to Power Query in Excel</li>
+    <li class="dark:text-gray-100">Microsoft Power BI Data Analyst Training (DEPI) – <em>Ongoing</em></li>
+    </ul>
+    </div>
+    </div>
+    </section>
+    <!-- 7. Contact Section -->
+    <section id="contact" aria-label="Contact" class="scroll-mt-24 fade-in mb-28">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary dark:text-accent mb-6">Let's Connect</h2>
+    <div class="grid md:grid-cols-2 gap-10 bg-card dark:bg-[#20283A] rounded-lg shadow p-6 border border-neutralBg">
+    <!-- Contact Form -->
+    <form id="contactForm" aria-label="Contact Form" class="flex flex-col space-y-4" autocomplete="off" novalidate>
+    <label for="name" class="font-semibold text-neutralText/80 dark:text-gray-300 duration-200">Name</label>
+    <input type="text" id="name" name="name" class="rounded border border-neutralBg dark:border-[#283047] bg-card dark:bg-[#20283A] text-neutralText dark:text-gray-100 px-4 py-2 focus:border-primary duration-200" required aria-required="true" aria-label="Name"
+        />
+    <label for="email" class="font-semibold text-neutralText/80 dark:text-gray-300 duration-200">Email</label>
+    <input type="email" id="email" name="email" class="rounded border border-neutralBg dark:border-[#283047] bg-card dark:bg-[#20283A] text-neutralText dark:text-gray-100 px-4 py-2 focus:border-primary duration-200" required aria-required="true" aria-label="Email"
+        />
+    <label for="message" class="font-semibold text-neutralText/80 dark:text-gray-300 duration-200">Message</label>
+    <textarea id="message" name="message" rows="4" class="rounded border border-neutralBg dark:border-[#283047] bg-card dark:bg-[#20283A] text-neutralText dark:text-gray-100 px-4 py-2 focus:border-primary resize-none duration-200" required aria-required="true"
+        aria-label="Message"></textarea>
+    <button type="submit" class="bg-primary text-card px-6 py-2 rounded shadow font-semibold hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Submit">Send Message</button>
+    <div id="formSuccess" class="hidden text-green-700 dark:text-green-400 mt-2" aria-live="polite">Thank you! Your message has been sent (demo mode).</div>
+    </form>
+    <!-- Contact Info & Social Links -->
+    <div class="flex flex-col justify-center items-start">
+    <div class="mb-4">
+    <p class="flex items-center gap-2 text-neutralText dark:text-gray-100 font-medium mb-6 font-medium"><i data-lucide="mail" class="lucide w-5 h-5 text-primary" aria-hidden="true"></i> <a href="mailto:mumin.ahmad@zohomail.com" class="hover:text-accent transition underline font-bold">mumin.ahmad@zohomail.com</a></p>
+    <p class="flex items-center gap-2 text-neutralText dark:text-gray-100 font-medium font-medium mt-2"><i data-lucide="smartphone" class="lucide w-5 h-5 text-accent" aria-hidden="true"></i> <a href="tel:+201033096839" class="hover:text-primary transition underline font-bold">+20 10 3309 6839</a></p>
+    <p class="flex items-center gap-2 text-neutralText dark:text-gray-100 font-medium font-medium mt-2"><i data-lucide="message-circle" class="lucide w-5 h-5 text-primary" aria-hidden="true"></i> <a href="https://wa.me/201033096839" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition underline font-bold" aria-label="WhatsApp">WhatsApp: +20 10 3309 6839</a></p>
+    <p class="flex items-center gap-2 text-neutralText dark:text-gray-100 font-medium font-medium mt-2"><i data-lucide="map-pin" class="lucide w-5 h-5 text-primary" aria-hidden="true"></i> Alexandria, Egypt</p>
+    </div>
+    <p class="text-xs text-neutralText/80 dark:text-gray-400 mb-4">Preferred contact method: Due to network challenges, I prefer WhatsApp communication for quick and reliable responses.</p>
+    <div class="flex gap-4 mt-2">
+    <a href="https://www.linkedin.com/in/mumin-ahmad/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary transition">
+    <i data-lucide="linkedin" class="lucide w-7 h-7"></i>
+    </a>
+    <a href="mailto:mumin.ahmad@zohomail.com" aria-label="Email" target="_blank" rel="noopener noreferrer" class="hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary transition">
+    <i data-lucide="mail" class="lucide w-7 h-7"></i>
+    </a>
+    </div>
+    </div>
+    </div>
+    </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-card dark:bg-[#20283A] border-t border-neutralBg shadow py-6 px-4 mt-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-center justify-between text-sm text-neutralText/70">
+    <!-- LEFT: Copyright -->
+    <div class="w-full md:w-auto md:flex-1 text-left mb-2 md:mb-0 text-neutralText/70 dark:text-gray-400">
+    © 2025 Mu'min Ahmad. All rights reserved.
+    </div>
+    <!-- CENTER: Footer Nav Links -->
+    <div class="w-full md:w-auto md:flex-1 flex justify-center mb-2 md:mb-0">
+    <nav class="flex gap-4">
+    <a href="#about" class="hover:text-primary font-medium dark:text-gray-100 transition">About</a>
+    <a href="#projects" class="hover:text-primary font-medium dark:text-gray-100 transition">Projects</a>
+    <a href="#contact" class="hover:text-primary font-medium dark:text-gray-100 transition">Contact</a>
+    </nav>
+    </div>
+    <!-- RIGHT: Social Icons -->
+    <div class="w-full md:w-auto md:flex-1 flex justify-end gap-2">
+    <a href="https://www.linkedin.com/in/mumin-ahmad/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="transition text-neutralText dark:text-gray-100 hover:text-primary dark:hover:text-accent"><i data-lucide="linkedin" class="lucide w-6 h-6"></i></a>
+    <a href="mailto:mumin.ahmad@zohomail.com" aria-label="Email" target="_blank" rel="noopener noreferrer" class="transition text-neutralText dark:text-gray-100 hover:text-primary dark:hover:text-accent"><i data-lucide="mail" class="lucide w-6 h-6"></i></a>
+    </div>
+    </div>
+    <div class="text-xs mt-3 text-gray-600 dark:text-gray-400 text-center">Transforming Data into Decisions</div>
+    </footer>
+    <!-- Script: Lucide Icon Rendering + Hamburger Navigation + Smooth Scroll + Fade-in Animation + Active Link Highlight + Form Validation -->
     </body>
+    <script>
+        lucide.createIcons();
+          
+          // Dark Mode
+          const darkBtn = document.getElementById('darkToggle');
+          function setDarkIcon(isDark) {
+            darkBtn.innerHTML = isDark
+              ? '<i data-lucide="sun" class="lucide w-5 h-5"></i>'
+              : '<i data-lucide="moon" class="lucide w-5 h-5"></i>';
+            lucide.createIcons();
+          }
+          // Toggle `dark` on <html>
+          darkBtn.onclick = function() {
+            document.documentElement.classList.toggle('dark');
+            setDarkIcon(document.documentElement.classList.contains('dark'));
+          };
+          setDarkIcon(document.documentElement.classList.contains('dark'));
+          
+          
+          // Hamburger menu
+          const navToggle = document.getElementById('navToggle');
+          const navMenu = document.getElementById('navMenu');
+          navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('hidden');
+            navToggle.classList.toggle('open');
+          });
+          
+          // Smooth scroll for anchor navigation (works for all links starting with #)
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              const href = anchor.getAttribute('href');
+              if(href.length > 1 && document.querySelector(href)) {
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                navMenu.classList.add('hidden');
+                navToggle.classList.remove('open');
+                setTimeout(highlightNav, 300); // <-- Force highlight to update after scroll
+              }
+            });
+          });
+          
+          // Fade-in animation for sections (Intersection Observer)
+          function fadeInSections() {
+            const faders = document.querySelectorAll('.fade-in');
+            const options = { threshold: 0.05 };
+            const observer = new IntersectionObserver(function(entries, observer) {
+              entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, options);
+            faders.forEach(fader => observer.observe(fader));
+          }
+          window.addEventListener('DOMContentLoaded', fadeInSections);
+          
+          // Active link highlight
+          // Section highlighting using Intersection Observer
+          const sectionIds = ['main-content','about','projects','skills','experience','contact'];
+          const navLinks = Array.from(document.querySelectorAll('#navMenu a'));
+          
+          const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40% 0px',
+            threshold: 0.1
+          };
+          
+          let activeSectionId = sectionIds[0]; // Default to 'home'
+          
+          function setActiveNav(id) {
+            navLinks.forEach(link => link.classList.remove('border-b-2','border-primary','text-primary','font-bold'));
+            const activeLink = navLinks.find(link => link.getAttribute('href').replace('#','') === id);
+            if (activeLink) {
+              activeLink.classList.add('border-b-2','border-primary','text-primary','font-bold');
+            }
+          }
+          
+          function onSectionIntersect(entries) {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                activeSectionId = entry.target.id;
+                setActiveNav(activeSectionId);
+              }
+            });
+          }
+          
+          // Set up observer
+          const observer = new IntersectionObserver(onSectionIntersect, observerOptions);
+          sectionIds.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) observer.observe(section);
+          });
+          
+          // Always highlight 'Home' when near top
+          window.addEventListener('scroll', function() {
+            if (window.scrollY < 80) {
+              activeSectionId = 'main-content';
+              setActiveNav('main-content');
+            }
+          });
+          
+          // Contact form validation
+          const contactForm = document.getElementById('contactForm');
+          const formSuccess = document.getElementById('formSuccess');
+          contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let valid = true;
+            ['name','email','message'].forEach(id => {
+              const input = document.getElementById(id);
+              if(!input.value || (id==='email' && !/^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(input.value))) {
+                input.classList.add('border-red-500');
+                input.classList.remove('border-green-500');
+                valid = false;
+              } else {
+                input.classList.remove('border-red-500');
+                input.classList.add('border-green-500');
+              }
+            });
+            if(valid) {
+              formSuccess.classList.remove('hidden');
+              setTimeout(()=>formSuccess.classList.add('hidden'), 5000);
+              contactForm.reset();
+              document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
+                input.classList.remove('border-green-500');
+              });
+            }
+          });
+          document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
+            input.addEventListener('input', function(){
+              if(this.value && (this.id!=='email' || /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(this.value))) {
+                this.classList.remove('border-red-500');
+                this.classList.add('border-green-500');
+              } else {
+                this.classList.remove('border-green-500');
+                this.classList.add('border-red-500');
+              }
+            });
+          });
+          
+          // Always start at top on page load (no scroll offset)
+          window.addEventListener('load', function() {
+          window.scrollTo(0, 0);
+          });
+          
+          document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+            });
+    </script>
 </html>
