@@ -565,85 +565,53 @@
     <script>
         lucide.createIcons();
           
-          // Dark Mode Logic
+          // Dark Mode
           const darkBtn = document.getElementById('darkToggle');
           function setDarkIcon(isDark) {
+            // Clear button content
             darkBtn.textContent = '';
+            // Create icon element safely
             const icon = document.createElement('i');
             icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
             icon.className = 'lucide w-5 h-5';
             darkBtn.appendChild(icon);
+            // Render the icon
             lucide.createIcons();
           }
-          
-          // Init Dark Mode
-          if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            setDarkIcon(true);
-          } else {
-            document.documentElement.classList.remove('dark');
-            setDarkIcon(false);
-          }
-        
-          // Toggle Dark Mode
+          // Toggle `dark` on <html>
           darkBtn.onclick = function() {
             document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.theme = isDark ? 'dark' : 'light';
-            setDarkIcon(isDark);
+            setDarkIcon(document.documentElement.classList.contains('dark'));
           };
+          setDarkIcon(document.documentElement.classList.contains('dark'));
+          
           
           // Hamburger menu
           const navToggle = document.getElementById('navToggle');
           const navMenu = document.getElementById('navMenu');
-          if (navToggle && navMenu) {
-              navToggle.addEventListener('click', function () {
-                navMenu.classList.toggle('hidden');
-                navToggle.classList.toggle('open');
-              });
-          }
+          navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('hidden');
+            navToggle.classList.toggle('open');
+          });
           
-          // Active Link State Helper
-          const navLinks = Array.from(document.querySelectorAll('#navMenu a'));
-          function setActiveNav(id) {
-            navLinks.forEach(link => {
-                link.classList.remove('border-b-2', 'border-primary', 'text-primary', 'font-bold');
-                // Also reset the hover state classes if needed, though CSS handles hover
-            });
-            const activeLink = navLinks.find(link => link.getAttribute('href').replace('#','') === id);
-            if (activeLink) {
-              activeLink.classList.add('border-b-2', 'border-primary', 'text-primary', 'font-bold');
-            }
-          }
-        
-          // Smooth scroll + Click Handling
+          // Smooth scroll for anchor navigation (works for all links starting with #)
           document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
               const href = anchor.getAttribute('href');
-              // Only handle internal links that exist
               if(href.length > 1 && document.querySelector(href)) {
                 e.preventDefault();
-                
-                // 1. Update active state immediately for feedback
-                const targetId = href.replace('#', '');
-                setActiveNav(targetId);
-                
-                // 2. Close mobile menu if open
-                if(navMenu && !navMenu.classList.contains('hidden')) {
-                    navMenu.classList.add('hidden');
-                    if(navToggle) navToggle.classList.remove('open');
-                }
-        
-                // 3. Smooth scroll
                 document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                navMenu.classList.add('hidden');
+                navToggle.classList.remove('open');
+                setTimeout(highlightNav, 300); // <-- Force highlight to update after scroll
               }
             });
           });
           
-          // Fade-in Animation
+          // Fade-in animation for sections (Intersection Observer)
           function fadeInSections() {
             const faders = document.querySelectorAll('.fade-in');
-            const options = { threshold: 0.1 };
+            const options = { threshold: 0.05 };
             const observer = new IntersectionObserver(function(entries, observer) {
               entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -656,88 +624,100 @@
           }
           window.addEventListener('DOMContentLoaded', fadeInSections);
           
-          // Scroll Spy (Active Link Highlighting)
-          // Tweak: rootMargin '-20% 0px -60% 0px' creates a "sweet spot" line near the top
-          // This prevents highlighting sections that are barely entering the bottom
+          // Active link highlight
+          // Section highlighting using Intersection Observer
+          const sectionIds = ['main-content','services','projects','experience','skills','about','education','contact'];
+          const navLinks = Array.from(document.querySelectorAll('#navMenu a'));
+          
           const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -60% 0px', 
-            threshold: 0
+            // Highlighting logic:
+            // Top -30%: Don't highlight until it's nicely in view
+            // Bottom -50%: Don't highlight next one until previous one is mostly gone
+            rootMargin: '-30% 0px -50% 0px',
+            threshold: 0.1
           };
           
-          const sectionIds = ['main-content','services','projects','experience','skills','about','education','contact'];
+          let activeSectionId = sectionIds[0]; // Default to 'home'
           
-          const observer = new IntersectionObserver((entries) => {
+          function setActiveNav(id) {
+            navLinks.forEach(link => link.classList.remove('border-b-2','border-primary','text-primary','font-bold'));
+            const activeLink = navLinks.find(link => link.getAttribute('href').replace('#','') === id);
+            if (activeLink) {
+              activeLink.classList.add('border-b-2','border-primary','text-primary','font-bold');
+            }
+          }
+          
+          function onSectionIntersect(entries) {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                setActiveNav(entry.target.id);
+                activeSectionId = entry.target.id;
+                setActiveNav(activeSectionId);
               }
             });
-          }, observerOptions);
+          }
           
+          // Set up observer
+          const observer = new IntersectionObserver(onSectionIntersect, observerOptions);
           sectionIds.forEach(id => {
             const section = document.getElementById(id);
             if (section) observer.observe(section);
           });
           
-          // Highlight 'Home' when at top
+          // Handle 'Home' and 'Services' transition
           window.addEventListener('scroll', function() {
+            // When at the very top, force Home
             if (window.scrollY < 50) {
+              activeSectionId = 'main-content';
               setActiveNav('main-content');
             }
-          });
-          
-          // Icon Reload on Load
-          document.addEventListener("DOMContentLoaded", function() {
-            lucide.createIcons();
           });
           
           // Contact form validation
           const contactForm = document.getElementById('contactForm');
           const formSuccess = document.getElementById('formSuccess');
-          if (contactForm) {
-              contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let valid = true;
-                ['name','email','message'].forEach(id => {
-                  const input = document.getElementById(id);
-                  if(!input.value || (id==='email' && !/^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$/.test(input.value))) {
-                    input.classList.add('border-red-500');
-                    input.classList.remove('border-green-500');
-                    valid = false;
-                  } else {
-                    input.classList.remove('border-red-500');
-                    input.classList.add('border-green-500');
-                  }
-                });
-                if(valid) {
-                  if(formSuccess) {
-                      formSuccess.classList.remove('hidden');
-                      setTimeout(()=>formSuccess.classList.add('hidden'), 5000);
-                  }
-                  contactForm.reset();
-                  document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
-                    input.classList.remove('border-green-500');
-                  });
-                }
-              });
-              
+          contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let valid = true;
+            ['name','email','message'].forEach(id => {
+              const input = document.getElementById(id);
+              if(!input.value || (id==='email' && !/^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$/.test(input.value))) {
+                input.classList.add('border-red-500');
+                input.classList.remove('border-green-500');
+                valid = false;
+              } else {
+                input.classList.remove('border-red-500');
+                input.classList.add('border-green-500');
+              }
+            });
+            if(valid) {
+              formSuccess.classList.remove('hidden');
+              setTimeout(()=>formSuccess.classList.add('hidden'), 5000);
+              contactForm.reset();
               document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
-                input.addEventListener('input', function(){
-                  if(this.value && (this.id!=='email' || /^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$/.test(this.value))) {
-                    this.classList.remove('border-red-500');
-                    this.classList.add('border-green-500');
-                  } else {
-                    this.classList.remove('border-green-500');
-                    this.classList.add('border-red-500');
-                  }
-                });
+                input.classList.remove('border-green-500');
               });
-          }
-          
-          // Force scroll to top on reload
-          window.addEventListener('beforeunload', function () {
-            window.scrollTo(0, 0);
+            }
           });
+          document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
+            input.addEventListener('input', function(){
+              if(this.value && (this.id!=='email' || /^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$/.test(this.value))) {
+                this.classList.remove('border-red-500');
+                this.classList.add('border-green-500');
+              } else {
+                this.classList.remove('border-green-500');
+                this.classList.add('border-red-500');
+              }
+            });
+          });
+          
+          // Always start at top on page load (no scroll offset)
+          window.addEventListener('load', function() {
+          window.scrollTo(0, 0);
+          });
+          
+          document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+            });
     </script>
 </html>
