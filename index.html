@@ -88,7 +88,7 @@
         <!-- Google Fonts -->
         <link class="dark:text-gray-100" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
         <!-- Lucide Icons CDN -->
-        <script src="https://unpkg.com/lucide@latest" defer></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
         <!-- Chart.js CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
         <!-- Icons Style -->
@@ -138,7 +138,41 @@
             clip: auto;
             white-space: normal;
             }
-            /* Fallback: Show content if JavaScript fails */
+            /* Enhanced dark mode toggle animation */
+                #darkToggle {
+                  position: relative;
+                  overflow: hidden;
+                }
+
+                #darkToggle::before {
+                  content: '';
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+                  transform: translateX(-100%);
+                  transition: transform 0.6s;
+                }
+
+                #darkToggle:hover::before {
+                  transform: translateX(100%);
+                }
+
+                /* Smooth icon transition */
+                #darkToggle i {
+                  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+
+                #darkToggle:hover i {
+                  transform: rotate(15deg) scale(1.1);
+                }
+
+                /* Active state animation */
+                #darkToggle:active i {
+                  transform: scale(0.9);
+                }
+
+                
+                /* Fallback: Show content if JavaScript fails */
             .fade-in {
             animation: fadeInFallback 0.1s ease-in 3s forwards;
             }
@@ -182,8 +216,8 @@
                     <span class="block w-6 h-1 mb-1 bg-primary"></span>
                     <span class="block w-6 h-1 bg-primary"></span>
                     </button>
-                    <button id="darkToggle" aria-label="Toggle dark mode" class="p-2 rounded bg-neutralBg text-primary border border-neutralText hover:bg-darkBg hover:text-accent transition">
-                    <i data-lucide="moon" class="lucide w-5 h-5"></i>
+                    <button id="darkToggle" aria-label="Toggle dark mode" class="p-2.5 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 text-primary dark:from-accent/20 dark:to-primary/20 dark:text-accent border border-primary/20 dark:border-accent/30 hover:scale-110 hover:shadow-lg transition-all duration-300 group">
+                    <i data-lucide="moon" class="lucide w-5 h-5 group-hover:rotate-12 transition-transform duration-300"></i>
                     </button>
                 </div>
             </nav>
@@ -496,9 +530,14 @@
           // Dark Mode
           const darkBtn = document.getElementById('darkToggle');
           function setDarkIcon(isDark) {
-            darkBtn.innerHTML = isDark
-              ? '<i data-lucide="sun" class="lucide w-5 h-5"></i>'
-              : '<i data-lucide="moon" class="lucide w-5 h-5"></i>';
+            // Clear button content
+            darkBtn.textContent = '';
+            // Create icon element safely
+            const icon = document.createElement('i');
+            icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            icon.className = 'lucide w-5 h-5';
+            darkBtn.appendChild(icon);
+            // Render the icon
             lucide.createIcons();
           }
           // Toggle `dark` on <html>
