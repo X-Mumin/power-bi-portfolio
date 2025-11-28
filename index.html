@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" m-0 p-0>
+<html lang="en" m-0 p-0 overflow-x-hidden>
     <head>
         <meta charset="UTF-8">
         <!-- Resource Hints for Performance -->
@@ -185,14 +185,18 @@
             .dark ::-webkit-scrollbar-thumb { background: #283047; }
             ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
             .dark ::-webkit-scrollbar-thumb:hover { background: #374151; }
-            /* Prevent layout shift when scrollbar appears */
+            /* Prevent layout shift & horizontal scroll */
             html {
-            overflow-y: scroll; /* Always show scrollbar track */
-            scrollbar-gutter: stable;
+            overflow-y: scroll; /* Always show vertical scrollbar to prevent shift */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            }
+            body {
+            overflow-x: hidden;
+            width: 100%;
             }
         </style>
     </head>
-    <body class="m-0 p-0 bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth duration-200">
+    <body class="m-0 p-0 overflow-x-hidden bg-neutralBg dark:bg-[#161C28] text-neutralText dark:text-gray-100 font-sans min-h-screen antialiased scroll-smooth duration-200">
         <!-- Skip Navigation Link for Accessibility -->
         <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">
         Skip to main content
@@ -673,12 +677,13 @@
             if (section) observer.observe(section);
           });
           
-          // Handle 'Home' and 'Services' transition
+          // Handle 'Home' highlight when at top
           window.addEventListener('scroll', function() {
-            // When at the very top, force Home
-            if (window.scrollY < 50) {
-              activeSectionId = 'main-content';
-              setActiveNav('main-content');
+            if (window.scrollY < 100) {
+              if (activeSectionId !== 'main-content') {
+                activeSectionId = 'main-content';
+                setActiveNav('main-content');
+              }
             }
           });
           
@@ -690,7 +695,7 @@
             let valid = true;
             ['name','email','message'].forEach(id => {
               const input = document.getElementById(id);
-              if(!input.value || (id==='email' && !/^[\\\w.-]+@[\\\w.-]+\\\.[A-Za-z]{2,}$/.test(input.value))) {
+              if(!input.value || (id==='email' && !/^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(input.value))) {
                 input.classList.add('border-red-500');
                 input.classList.remove('border-green-500');
                 valid = false;
@@ -710,7 +715,7 @@
           });
           document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input=>{
             input.addEventListener('input', function(){
-              if(this.value && (this.id!=='email' || /^[\\\w.-]+@[\\\w.-]+\\\.[A-Za-z]{2,}$/.test(this.value))) {
+              if(this.value && (this.id!=='email' || /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(this.value))) {
                 this.classList.remove('border-red-500');
                 this.classList.add('border-green-500');
               } else {
